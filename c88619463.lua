@@ -1,4 +1,5 @@
 --黒の魔法神官
+---@param c Card
 function c88619463.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon
@@ -37,13 +38,13 @@ end
 function c88619463.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local rg=Duel.GetReleaseGroup(tp):Filter(c88619463.rfilter,nil,tp)
-	return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp)
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c88619463.rfilter,nil,tp)
+	return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp,REASON_SPSUMMON)
 end
 function c88619463.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local rg=Duel.GetReleaseGroup(tp):Filter(c88619463.rfilter,nil,tp)
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c88619463.rfilter,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,true,2,2,tp)
+	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,true,2,2,tp,REASON_SPSUMMON)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)
@@ -52,7 +53,7 @@ function c88619463.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c88619463.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c88619463.discon(e,tp,eg,ep,ev,re,r,rp)

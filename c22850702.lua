@@ -1,4 +1,5 @@
---カオス・アンヘル-混沌の双翼-
+--カオス・アンヘル－混沌の双翼－
+---@param c Card
 function c22850702.initial_effect(c)
 	--synchro summon
 	c:EnableReviveLimit()
@@ -92,6 +93,6 @@ function c22850702.regop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c22850702.efilter(e,re)
-	return re:GetOwnerPlayer()~=e:GetOwnerPlayer() and re:IsActivated()
+	return re:GetOwnerPlayer()~=e:GetHandlerPlayer() and re:IsActivated()
 		and re:IsActiveType(TYPE_MONSTER)
 end

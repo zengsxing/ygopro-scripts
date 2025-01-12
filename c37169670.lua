@@ -1,4 +1,5 @@
 --ハイパーサイコガンナー／バスター
+---@param c Card
 function c37169670.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	c:EnableReviveLimit()
@@ -7,7 +8,7 @@ function c37169670.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(aux.FALSE)
+	e1:SetValue(aux.AssaultModeLimit)
 	c:RegisterEffect(e1)
 	--damage&recover
 	local e2=Effect.CreateEffect(c)

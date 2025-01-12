@@ -1,4 +1,5 @@
 --コンビネーション・アタック
+---@param c Card
 function c8964854.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -11,6 +12,7 @@ function c8964854.initial_effect(c)
 	e1:SetOperation(c8964854.operation)
 	c:RegisterEffect(e1)
 end
+c8964854.has_text_type=TYPE_UNION
 function c8964854.condition(e,tp,eg,ep,ev,re,r,rp)
 	return (Duel.GetCurrentPhase()>=PHASE_BATTLE_START and Duel.GetCurrentPhase()<=PHASE_BATTLE)
 end

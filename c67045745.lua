@@ -1,4 +1,5 @@
 --F.A.ソニックマイスター
+---@param c Card
 function c67045745.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)
@@ -21,6 +22,7 @@ function c67045745.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
 	e3:SetCode(EVENT_CHAINING)
 	e3:SetRange(LOCATION_MZONE)
+	e3:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e3:SetCondition(c67045745.lvcon)
 	e3:SetOperation(c67045745.lvop)
 	c:RegisterEffect(e3)

@@ -1,4 +1,5 @@
 --星輝士 トライヴェール
+---@param c Card
 function c42589641.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,c42589641.xyzfilter,4,3)
@@ -121,7 +122,7 @@ function c42589641.hdop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SendtoGrave(sg,REASON_EFFECT)
 end
 function c42589641.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():GetOverlayCount()>0 and e:GetHandler():IsPreviousLocation(LOCATION_MZONE)
+	return e:GetHandler():GetPreviousOverlayCountOnField()>0 and e:GetHandler():IsPreviousLocation(LOCATION_MZONE)
 end
 function c42589641.spfilter(c,e,tp)
 	return c:IsSetCard(0x9c) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)

@@ -1,5 +1,6 @@
 --ベアルクティ－ポーラ＝スター
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon condition
@@ -15,6 +16,7 @@ function s.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetRange(LOCATION_EXTRA)
 	e2:SetCondition(s.sprcon)
+	e2:SetTarget(s.sprtg)
 	e2:SetOperation(s.sprop)
 	c:RegisterEffect(e2)
 	--special summon
@@ -47,11 +49,20 @@ function s.sprcon(e,c)
 	local g=Duel.GetMatchingGroup(s.tgrfilter,tp,LOCATION_MZONE,0,nil)
 	return g:CheckSubGroup(s.fselect,2,2,tp,c)
 end
-function s.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+function s.sprtg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 	local g=Duel.GetMatchingGroup(s.tgrfilter,tp,LOCATION_MZONE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local tg=g:SelectSubGroup(tp,s.fselect,false,2,2,tp,c)
-	Duel.SendtoGrave(tg,REASON_COST)
+	local sg=g:SelectSubGroup(tp,s.fselect,true,2,2,tp,c)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function s.sprop(e,tp,eg,ep,ev,re,r,rp,c)
+	local tg=e:GetLabelObject()
+	Duel.SendtoGrave(tg,REASON_SPSUMMON)
+	tg:DeleteGroup()
 end
 function s.checkrelrep(c,tp)
 	return c:IsHasEffect(16471775,tp) or c:IsHasEffect(89264428,tp)
@@ -102,7 +113,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		local tc=g:GetFirst()
 		if Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)>0 then
 			local c=e:GetHandler()
-			local e1=Effect.CreateEffect(c)
+			local e1=Effect.CreateEffect(tc)
 			e1:SetType(EFFECT_TYPE_FIELD)
 			e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
 			e1:SetCode(EFFECT_CANNOT_ACTIVATE)

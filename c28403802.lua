@@ -1,4 +1,5 @@
 --P.U.N.K.JAMドラゴン・ドライブ
+---@param c Card
 function c28403802.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_PSYCHO),aux.NonTuner(nil),1)
@@ -29,7 +30,8 @@ function c28403802.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c28403802.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO) or re:GetHandler():IsSetCard(0x171)
+	local c=e:GetHandler()
+	return c:IsSummonType(SUMMON_TYPE_SYNCHRO) or c:IsSpecialSummonSetCard(0x171)
 end
 function c28403802.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,600) end

@@ -1,4 +1,5 @@
 --白闘気白鯨
+---@param c Card
 function c5614808.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER),aux.NonTuner(Card.IsAttribute,ATTRIBUTE_WATER),1)
@@ -39,6 +40,7 @@ function c5614808.initial_effect(c)
 	e4:SetOperation(c5614808.operation)
 	c:RegisterEffect(e4)
 end
+c5614808.treat_itself_tuner=true
 function c5614808.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end

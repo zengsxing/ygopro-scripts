@@ -1,4 +1,5 @@
 --平行世界融合
+---@param c Card
 function c54283059.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -75,6 +76,7 @@ function c54283059.activate(e,tp,eg,ep,ev,re,r,rp)
 		if sg1:IsContains(tc) and (sg2==nil or not sg2:IsContains(tc) or not Duel.SelectYesNo(tp,ce:GetDescription())) then
 			local mat=Duel.SelectFusionMaterial(tp,tc,mg,nil,chkf)
 			tc:SetMaterial(mat)
+			Duel.HintSelection(mat)
 			Duel.SendtoDeck(mat,nil,SEQ_DECKSHUFFLE,REASON_EFFECT+REASON_MATERIAL+REASON_FUSION)
 			Duel.BreakEffect()
 			Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)

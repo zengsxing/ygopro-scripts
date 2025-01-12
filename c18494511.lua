@@ -1,5 +1,7 @@
 --氷水帝エジル・ラーン
+---@param c Card
 function c18494511.initial_effect(c)
+	aux.AddCodeList(c,7142724)
 	--special summon (self)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(18494511,0))

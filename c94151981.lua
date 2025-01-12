@@ -1,5 +1,6 @@
 --エクシーズ・アーマー・トルピード
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,3,2)
@@ -70,7 +71,7 @@ function s.drawoperation(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.actcon(e)
 	local tc=e:GetHandler():GetEquipTarget()
-	return Duel.GetAttacker()==tc or Duel.GetAttackTarget()==tc
+	return tc~=nil and (Duel.GetAttacker()==tc or Duel.GetAttackTarget()==tc)
 end
 function s.disfilter(c)
 	return aux.NegateAnyFilter(c) and c:IsType(TYPE_MONSTER) and c:IsFaceup()

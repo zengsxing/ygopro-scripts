@@ -1,5 +1,7 @@
 --ヴァリアンツD－デューク
+---@param c Card
 function c13291886.initial_effect(c)
+	aux.AddCodeList(c,75952542)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
 	--spsummon

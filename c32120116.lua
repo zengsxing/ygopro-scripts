@@ -1,4 +1,5 @@
 --閻魔の裁き
+---@param c Card
 function c32120116.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -12,8 +13,7 @@ end
 function c32120116.filter(c,tp)
 	return c:IsSummonPlayer(tp)
 end
-function c32120116.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return false end
+function c32120116.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c32120116.filter,1,nil,1-tp) end
 	Duel.SetTargetCard(eg)
 	local g=eg:Filter(c32120116.filter,nil,1-tp)

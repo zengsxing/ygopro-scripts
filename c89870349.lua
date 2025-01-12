@@ -1,4 +1,5 @@
 --M・HERO ブラスト
+---@param c Card
 function c89870349.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition
@@ -6,6 +7,7 @@ function c89870349.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetValue(aux.MaskChangeLimit)
 	c:RegisterEffect(e1)
 	--atk
 	local e2=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --閃刀姫－カガリ
+---@param c Card
 function c63288573.initial_effect(c)
 	c:SetSPSummonOnce(63288573)
 	--link summon
@@ -24,7 +25,7 @@ function c63288573.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c63288573.matfilter(c)
-	return c:IsLinkSetCard(0x1115) and c:IsLinkAttribute(ATTRIBUTE_ALL-ATTRIBUTE_FIRE)
+	return c:IsLinkSetCard(0x1115) and c:IsLinkAttribute(ATTRIBUTE_ALL&~ATTRIBUTE_FIRE)
 end
 function c63288573.atkval(e)
 	return Duel.GetMatchingGroupCount(Card.IsType,e:GetHandlerPlayer(),LOCATION_GRAVE,0,nil,TYPE_SPELL)*100

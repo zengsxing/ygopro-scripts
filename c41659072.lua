@@ -1,4 +1,5 @@
 --熾天龍 ジャッジメント
+---@param c Card
 function c41659072.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroMixProcedure(c,aux.Tuner(nil),nil,nil,aux.NonTuner(nil),1,99,c41659072.syncheck)
@@ -36,13 +37,7 @@ function c41659072.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c41659072.syncheck(g)
-	local sg=g:Clone()
-	local attr=ATTRIBUTE_ALL
-	for c in aux.Next(sg) do
-		attr=attr&c:GetAttribute()
-		if attr==0 then break end
-	end
-	return attr~=0
+	return aux.SameValueCheck(g,Card.GetAttribute)
 end
 function c41659072.sumlimit(e,se,sp,st)
 	return bit.band(st,SUMMON_TYPE_SYNCHRO)~=SUMMON_TYPE_SYNCHRO or not se

@@ -1,4 +1,5 @@
 --閃刀姫－ハヤテ
+---@param c Card
 function c8491308.initial_effect(c)
 	c:SetSPSummonOnce(8491308)
 	c:EnableReviveLimit()
@@ -19,7 +20,7 @@ function c8491308.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c8491308.matfilter(c)
-	return c:IsLinkSetCard(0x1115) and c:IsLinkAttribute(ATTRIBUTE_ALL-ATTRIBUTE_WIND)
+	return c:IsLinkSetCard(0x1115) and c:IsLinkAttribute(ATTRIBUTE_ALL&~ATTRIBUTE_WIND)
 end
 function c8491308.tgfilter(c)
 	return c:IsSetCard(0x115) and c:IsAbleToGrave()

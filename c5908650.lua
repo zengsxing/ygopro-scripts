@@ -1,4 +1,5 @@
 --幻奏の音姫ローリイット・フランソワ
+---@param c Card
 function c5908650.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)
@@ -16,7 +17,7 @@ function c5908650.initial_effect(c)
 end
 function c5908650.chainfilter(re,tp,cid)
 	local attr=Duel.GetChainInfo(cid,CHAININFO_TRIGGERING_ATTRIBUTE)
-	return not (re:IsActiveType(TYPE_MONSTER) and attr&(ATTRIBUTE_ALL-ATTRIBUTE_LIGHT)~=0)
+	return not (re:IsActiveType(TYPE_MONSTER) and attr&(ATTRIBUTE_ALL&~ATTRIBUTE_LIGHT)~=0)
 end
 function c5908650.thcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetCustomActivityCount(5908650,tp,ACTIVITY_CHAIN)==0 end

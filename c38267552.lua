@@ -1,6 +1,7 @@
 --夢魔鏡の黒騎士－ルペウス
+---@param c Card
 function c38267552.initial_effect(c)
-	aux.AddCodeList(c,74665651)
+	aux.AddCodeList(c,74665651,1872843)
 	--indestructable
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(38267552,0))
@@ -29,7 +30,8 @@ function c38267552.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c38267552.descon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsSetCard(0x131) and re:GetHandler():IsType(TYPE_MONSTER)
+	local c=e:GetHandler()
+	return c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x131)
 end
 function c38267552.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() end

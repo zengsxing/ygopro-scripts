@@ -1,4 +1,5 @@
 --混源龍レヴィオニア
+---@param c Card
 function c55878038.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon
@@ -9,6 +10,7 @@ function c55878038.initial_effect(c)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetRange(LOCATION_HAND)
 	e1:SetCondition(c55878038.spcon)
+	e1:SetTarget(c55878038.sptg)
 	e1:SetOperation(c55878038.spop)
 	e1:SetValue(SUMMON_VALUE_SELF)
 	c:RegisterEffect(e1)
@@ -33,9 +35,18 @@ function c55878038.spcon(e,c)
 	if Duel.GetMZoneCount(tp)<=0 then return false end
 	return Duel.IsExistingMatchingCard(c55878038.spcostfilter,tp,LOCATION_GRAVE,0,3,nil)
 end
-function c55878038.spop(e,tp,eg,ep,ev,re,r,rp,c)
+function c55878038.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
+	local g=Duel.GetMatchingGroup(c55878038.spcostfilter,tp,LOCATION_GRAVE,0,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,c55878038.spcostfilter,tp,LOCATION_GRAVE,0,3,3,nil)
+	local sg=g:CancelableSelect(tp,3,3,nil)
+	if sg then
+		sg:KeepAlive()
+		e:SetLabelObject(sg)
+		return true
+	else return false end
+end
+function c55878038.spop(e,tp,eg,ep,ev,re,r,rp,c)
+	local g=e:GetLabelObject()
 	local label=0
 	if g:IsExists(Card.IsAttribute,1,nil,ATTRIBUTE_LIGHT) then
 		label=label+1
@@ -44,7 +55,8 @@ function c55878038.spop(e,tp,eg,ep,ev,re,r,rp,c)
 		label=label+2
 	end
 	e:SetLabel(label)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
+	g:DeleteGroup()
 end
 function c55878038.descon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():GetSummonType()==SUMMON_TYPE_SPECIAL+SUMMON_VALUE_SELF

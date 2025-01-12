@@ -1,5 +1,6 @@
 --S：Pリトルナイト
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material
@@ -44,7 +45,7 @@ function s.srmtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_GRAVE+LOCATION_ONFIELD) and chkc:IsAbleToRemove() end
 	if chk==0 then return Duel.IsExistingTarget(Card.IsAbleToRemove,tp,LOCATION_GRAVE+LOCATION_ONFIELD,LOCATION_GRAVE+LOCATION_ONFIELD,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectTarget(tp,Card.IsAbleToRemove,tp,LOCATION_GRAVE+LOCATION_ONFIELD,LOCATION_GRAVE+LOCATION_ONFIELD,1,1,nil)
+	local g=aux.SelectTargetFromFieldFirst(tp,Card.IsAbleToRemove,tp,LOCATION_GRAVE+LOCATION_ONFIELD,LOCATION_GRAVE+LOCATION_ONFIELD,1,1,nil)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
 end
 function s.srmop(e,tp,eg,ep,ev,re,r,rp)
@@ -53,7 +54,6 @@ function s.srmop(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_CANNOT_DIRECT_ATTACK)
-	e1:SetProperty(EFFECT_FLAG_IGNORE_IMMUNE)
 	e1:SetTargetRange(LOCATION_MZONE,0)
 	e1:SetReset(RESET_PHASE+PHASE_END)
 	Duel.RegisterEffect(e1,tp)
@@ -88,25 +88,28 @@ function s.drmop(e,tp,eg,ep,ev,re,r,rp)
 	if #g~=2 or Duel.Remove(g,0,REASON_EFFECT+REASON_TEMPORARY)==0
 			or not g:IsExists(Card.IsLocation,1,nil,LOCATION_REMOVED) then return end
 	local og=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_REMOVED)
+	local c=e:GetHandler()
+	local fid=c:GetFieldID()
 	for tc in aux.Next(og) do
-		tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1)
+		tc:RegisterFlagEffect(id,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,0,1,fid)
 	end
 	og:KeepAlive()
 	local e1=Effect.CreateEffect(e:GetHandler())
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
 	e1:SetReset(RESET_PHASE+PHASE_END)
+	e1:SetLabel(fid)
 	e1:SetLabelObject(og)
 	e1:SetCountLimit(1)
 	e1:SetCondition(s.retcon)
 	e1:SetOperation(s.retop)
 	Duel.RegisterEffect(e1,tp)
 end
-function s.retfilter(c)
-	return c:GetFlagEffect(id)~=0
+function s.retfilter(c,fid)
+	return c:GetFlagEffectLabel(id)==fid
 end
 function s.retcon(e,tp,eg,ep,ev,re,r,rp)
-	if not e:GetLabelObject():IsExists(s.retfilter,1,nil) then
+	if not e:GetLabelObject():IsExists(s.retfilter,1,nil,e:GetLabel()) then
 		e:GetLabelObject():DeleteGroup()
 		e:Reset()
 		return false
@@ -114,8 +117,22 @@ function s.retcon(e,tp,eg,ep,ev,re,r,rp)
 	return true
 end
 function s.retop(e,tp,eg,ep,ev,re,r,rp)
-	local g=e:GetLabelObject():Filter(s.retfilter,nil)
-	for tc in aux.Next(g) do
-		Duel.ReturnToField(tc)
+	local fid=e:GetLabel()
+	local g=e:GetLabelObject():Filter(s.retfilter,nil,fid)
+	if #g<=0 then return end
+	Duel.Hint(HINT_CARD,0,id)
+	for p in aux.TurnPlayers() do
+		local tg=g:Filter(Card.IsPreviousControler,nil,p)
+		local ft=Duel.GetLocationCount(p,LOCATION_MZONE)
+		if #tg>1 and ft==1 then
+			Duel.Hint(HINT_SELECTMSG,p,HINTMSG_TOFIELD)
+			local sg=tg:Select(p,1,1,nil)
+			Duel.ReturnToField(sg:GetFirst())
+			tg:Sub(sg)
+		end
+		for tc in aux.Next(tg) do
+			Duel.ReturnToField(tc)
+		end
 	end
+	e:GetLabelObject():DeleteGroup()
 end

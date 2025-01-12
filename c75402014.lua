@@ -1,4 +1,5 @@
 --竜装合体 ドラゴニック・ホープレイ
+---@param c Card
 function c75402014.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,5,3)
@@ -16,9 +17,7 @@ function c75402014.initial_effect(c)
 	e1:SetOperation(c75402014.eqop)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BE_BATTLE_TARGET)
-	e2:SetCondition(aux.TRUE)
 	c:RegisterEffect(e2)
 	--disable
 	local e3=Effect.CreateEffect(c)

@@ -1,4 +1,5 @@
 --カオス・ソルジャー －宵闇の使者－
+---@param c Card
 function c77498348.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon
@@ -59,7 +60,7 @@ function c77498348.spcon(e,c)
 end
 function c77498348.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c77498348.spfilter,tp,LOCATION_GRAVE,0,nil,e:GetLabel())
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 	e:GetLabelObject():SetLabel(e:GetLabel())
 end
 function c77498348.rmcon(e,tp,eg,ep,ev,re,r,rp)

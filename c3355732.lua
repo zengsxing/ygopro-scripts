@@ -1,5 +1,7 @@
 --氷水帝コスモクロア
+---@param c Card
 function c3355732.initial_effect(c)
+	aux.AddCodeList(c,7142724)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

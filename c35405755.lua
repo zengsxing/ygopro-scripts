@@ -1,5 +1,6 @@
 --俱利伽羅天童
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon condition
@@ -61,11 +62,11 @@ function s.sprcon(e,c)
 		local r2=Duel.GetMatchingGroupCount(s.rfilter,tp,0,LOCATION_MZONE,nil,1-tp)
 		if t1-r1+1 > t2-r2 then return false end
 	end
-	return rg:GetCount()>0 and rg:FilterCount(Card.IsReleasable,nil)==rg:GetCount() and aux.mzctcheck(rg,tp)
+	return rg:GetCount()>0 and rg:FilterCount(Card.IsReleasable,nil,REASON_SPSUMMON)==rg:GetCount() and aux.mzctcheck(rg,tp)
 end
 function s.sprop(e,tp,eg,ep,ev,re,r,rp,c)
 	local rg=Duel.GetMatchingGroup(s.rfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,1-tp)
-	Duel.Release(rg,REASON_COST)
+	Duel.Release(rg,REASON_SPSUMMON)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_UPDATE_ATTACK)

@@ -1,4 +1,5 @@
 --方界帝ヴァルカン・ドラグニー
+---@param c Card
 function c77387463.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon rule
@@ -52,7 +53,7 @@ function c77387463.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c77387463.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.SendtoGrave(g,REASON_COST)
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

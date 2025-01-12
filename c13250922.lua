@@ -1,4 +1,5 @@
 --オオアリクイクイアリ
+---@param c Card
 function c13250922.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon
@@ -51,7 +52,7 @@ function c13250922.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c13250922.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.SendtoGrave(g,REASON_COST)
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c13250922.filter(c)

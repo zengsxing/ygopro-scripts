@@ -1,4 +1,5 @@
 --セイクリッド・カドケウス
+---@param c Card
 function c82913020.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)
@@ -48,7 +49,6 @@ function c82913020.spop(e,tp,eg,ep,ev,re,r,rp)
 	if not c:IsRelateToEffect(e) then return end
 	Duel.SpecialSummon(c,0,tp,tp,false,false,POS_FACEUP)
 end
---Modified from Nemeses Flag
 function c82913020.srfilter(c)
 	return c:IsSetCard(0x53) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:IsAbleToHand()
 end
@@ -64,7 +64,6 @@ function c82913020.srop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.ConfirmCards(1-tp,g)
 	end
 end
---Modified from Gagaga Magician and Supreme King Dragon Clear Wing
 function c82913020.mcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local bc=c:GetBattleTarget()

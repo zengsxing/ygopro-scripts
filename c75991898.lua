@@ -1,4 +1,5 @@
 --ラヴァルバル・ドラゴン
+---@param c Card
 function c75991898.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsAttribute,ATTRIBUTE_FIRE),1)
@@ -22,6 +23,7 @@ function c75991898.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c75991898.costfilter,tp,LOCATION_GRAVE,0,2,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c75991898.costfilter,tp,LOCATION_GRAVE,0,2,2,nil)
+	Duel.HintSelection(g)
 	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c75991898.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

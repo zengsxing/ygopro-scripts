@@ -1,4 +1,5 @@
 --フォーチュンレディ・ファイリー
+---@param c Card
 function c71870152.initial_effect(c)
 	--atk,def
 	local e1=Effect.CreateEffect(c)
@@ -51,7 +52,7 @@ function c71870152.lvop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c71870152.descon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsFaceup() and c:IsAttackPos() and re and re:GetHandler():IsSetCard(0x31)
+	return c:IsFaceup() and c:IsAttackPos() and c:IsSpecialSummonSetCard(0x31)
 end
 function c71870152.filter(c)
 	return c:IsFaceup()

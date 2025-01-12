@@ -1,4 +1,5 @@
 --カオス・コア
+---@param c Card
 function c54040484.initial_effect(c)
 	c:EnableCounterPermit(0x57)
 	aux.AddCodeList(c,6007213,32491822,69890967)
@@ -15,7 +16,6 @@ function c54040484.initial_effect(c)
 	e1:SetOperation(c54040484.countop)
 	c:RegisterEffect(e1)
 	local e2=e1:Clone()
-	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_BE_BATTLE_TARGET)
 	e2:SetCondition(c54040484.countcon2)
 	c:RegisterEffect(e2)

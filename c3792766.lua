@@ -1,4 +1,5 @@
 --トリックスター・デビルフィニウム
+---@param c Card
 function c3792766.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkSetCard,0xfb),2)
@@ -8,6 +9,7 @@ function c3792766.initial_effect(c)
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_ATTACK_ANNOUNCE)
+	e1:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e1:SetCondition(c3792766.thcon)
 	e1:SetTarget(c3792766.thtg)
 	e1:SetOperation(c3792766.thop)

@@ -1,4 +1,5 @@
 --電脳堺龍－龍々
+---@param c Card
 function c61641818.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedureLevelFree(c,c61641818.mfilter,c61641818.xyzcheck,2,99)
@@ -31,7 +32,7 @@ function c61641818.mfilter(c,xyzc)
 	return c:IsXyzType(TYPE_MONSTER) and c:IsXyzLevel(xyzc,3)
 end
 function c61641818.xyzcheck(g)
-	return g:GetClassCount(Card.GetRace)==1 and g:GetClassCount(Card.GetAttribute)==1
+	return aux.SameValueCheck(g,Card.GetRace) and aux.SameValueCheck(g,Card.GetAttribute)
 end
 function c61641818.etcon(e)
 	return e:GetHandler():GetOverlayCount()~=0

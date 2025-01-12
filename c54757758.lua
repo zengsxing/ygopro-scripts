@@ -1,4 +1,5 @@
 --沼地のドロゴン
+---@param c Card
 function c54757758.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -42,7 +43,7 @@ end
 function c54757758.atttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local aat=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL-e:GetHandler():GetAttribute())
+	local aat=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL&~e:GetHandler():GetAttribute())
 	e:SetLabel(aat)
 end
 function c54757758.attop(e,tp,eg,ep,ev,re,r,rp)

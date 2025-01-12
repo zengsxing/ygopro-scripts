@@ -1,4 +1,5 @@
 --アイス・ブリザード・マスター
+---@param c Card
 function c32750510.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -38,13 +39,13 @@ end
 function c32750510.spcon(e,c)
 	if c==nil then return true end
 	local tp=c:GetControler()
-	local rg=Duel.GetReleaseGroup(tp):Filter(c32750510.rfilter,nil,tp)
-	return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp)
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c32750510.rfilter,nil,tp)
+	return rg:CheckSubGroup(aux.mzctcheckrel,2,2,tp,REASON_SPSUMMON)
 end
 function c32750510.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
-	local rg=Duel.GetReleaseGroup(tp):Filter(c32750510.rfilter,nil,tp)
+	local rg=Duel.GetReleaseGroup(tp,false,REASON_SPSUMMON):Filter(c32750510.rfilter,nil,tp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,true,2,2,tp)
+	local sg=rg:SelectSubGroup(tp,aux.mzctcheckrel,true,2,2,tp,REASON_SPSUMMON)
 	if sg then
 		sg:KeepAlive()
 		e:SetLabelObject(sg)
@@ -53,7 +54,7 @@ function c32750510.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c32750510.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.Release(g,REASON_COST)
+	Duel.Release(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c32750510.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)

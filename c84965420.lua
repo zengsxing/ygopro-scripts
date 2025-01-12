@@ -1,4 +1,5 @@
 --ドライトロン流星群
+---@param c Card
 function c84965420.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -22,7 +23,7 @@ function c84965420.cfilter(c,tp)
 end
 function c84965420.condition(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.IsExistingMatchingCard(c84965420.filter,tp,LOCATION_MZONE,0,1,nil)
-		and Duel.GetCurrentChain()==0 and eg:IsExists(c84965420.cfilter,1,nil,tp)
+		and aux.NegateSummonCondition() and eg:IsExists(c84965420.cfilter,1,nil,tp)
 end
 function c84965420.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

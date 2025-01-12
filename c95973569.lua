@@ -1,5 +1,6 @@
 --TG グレイヴ・ブラスター
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material
@@ -9,6 +10,7 @@ function s.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
+	e1:SetValue(aux.synlimit)
 	c:RegisterEffect(e1)
 	--banish
 	local e2=Effect.CreateEffect(c)
@@ -31,18 +33,18 @@ function s.initial_effect(c)
 	e3:SetValue(s.matchk)
 	c:RegisterEffect(e3)
 	--spsummon
+	local custom_code=aux.RegisterMergedDelayedEvent_ToSingleCard(c,id,EVENT_REMOVE)
 	local e4=Effect.CreateEffect(c)
 	e4:SetDescription(aux.Stringid(id,1))
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e4:SetCode(EVENT_CUSTOM+id)
+	e4:SetCode(custom_code)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCountLimit(1)
 	e4:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
 	e4:SetTarget(s.sptg)
 	e4:SetOperation(s.spop)
 	c:RegisterEffect(e4)
-	aux.RegisterMergedDelayedEvent(c,id,EVENT_REMOVE)
 end
 function s.rmcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -69,8 +71,8 @@ function s.matchk(e,c)
 	ef:SetCountLimit(ct)
 end
 function s.sfilter(c,e,tp)
-	return c:IsFaceup() and c:IsCanBeEffectTarget(e)
-		and c:IsCanBeSpecialSummoned(e,0,tp,true,false) and c:IsType(TYPE_MONSTER)
+	return c:IsType(TYPE_MONSTER) and c:IsFaceup() and c:IsCanBeEffectTarget(e)
+		and c:IsCanBeSpecialSummoned(e,0,tp,true,false)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local g=eg:Filter(s.sfilter,nil,e,tp)

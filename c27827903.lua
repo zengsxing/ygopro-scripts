@@ -1,4 +1,5 @@
 --A・ジェネクス・クラッシャー
+---@param c Card
 function c27827903.initial_effect(c)
 	--destroy
 	local e1=Effect.CreateEffect(c)
@@ -27,7 +28,7 @@ function c27827903.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c27827903.desop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsControler(1-tp) then
 		Duel.Destroy(tc,REASON_EFFECT)
 	end
 end

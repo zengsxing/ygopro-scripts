@@ -1,4 +1,5 @@
 --らくがきじゅう－てらの
+---@param c Card
 function c67725394.initial_effect(c)
 	--summon with 1 tribute
 	local e1=Effect.CreateEffect(c)
@@ -95,7 +96,6 @@ function c67725394.desop(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 then
 		Duel.HintSelection(g)
 		if Duel.Destroy(g,REASON_EFFECT)~=0 and e:GetLabel()==1 and c:IsRelateToEffect(e) and c:IsFaceup() then
-			Duel.BreakEffect()
 			local e1=Effect.CreateEffect(c)
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_UPDATE_ATTACK)

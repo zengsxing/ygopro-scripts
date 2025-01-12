@@ -1,4 +1,5 @@
 --オノマト選択
+---@param c Card
 function c85119159.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -20,7 +21,7 @@ function c85119159.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c85119159.filter(c)
-	return c:IsAbleToHand() and (c:IsSetCard(0x13a) or c:IsCode(8512558)) and not c:IsCode(85119159)
+	return c:IsAbleToHand() and c:IsSetCard(0x13a) and not c:IsCode(85119159)
 end
 function c85119159.activate(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c85119159.filter,tp,LOCATION_DECK,0,nil)

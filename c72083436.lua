@@ -1,4 +1,5 @@
 --天馬の翼
+---@param c Card
 function c72083436.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -11,6 +12,7 @@ function c72083436.initial_effect(c)
 	e1:SetOperation(c72083436.daop)
 	c:RegisterEffect(e1)
 end
+c72083436.has_text_type=TYPE_UNION
 function c72083436.cfilter(c)
 	return c:IsType(TYPE_UNION)
 end

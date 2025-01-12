@@ -1,5 +1,7 @@
 --A宝玉獣 ルビー・カーバンクル
+---@param c Card
 function c83575471.initial_effect(c)
+	aux.AddCodeList(c,12644061)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	--self to grave
 	local e1=Effect.CreateEffect(c)

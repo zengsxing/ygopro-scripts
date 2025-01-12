@@ -1,4 +1,5 @@
 --サイバー・ヴァリー
+---@param c Card
 function c3657444.initial_effect(c)
 	--be target
 	local e1=Effect.CreateEffect(c)
@@ -49,13 +50,14 @@ function c3657444.filter2(c)
 	return c:IsFaceup() and c:IsAbleToRemove()
 end
 function c3657444.target2(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	local c=e:GetHandler()
 	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c3657444.filter2(chkc) end
-	if chk==0 then return e:GetHandler():IsAbleToRemove() and Duel.IsPlayerCanDraw(tp,2)
-		and Duel.IsExistingTarget(c3657444.filter2,tp,LOCATION_MZONE,0,1,e:GetHandler()) end
+	if chk==0 then return c:IsAbleToRemove() and Duel.IsPlayerCanDraw(tp,2)
+		and Duel.IsExistingTarget(c3657444.filter2,tp,LOCATION_MZONE,0,1,c) and c:IsCanBeEffectTarget() end
 	Duel.Hint(HINT_OPSELECTED,1-tp,e:GetDescription())
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectTarget(tp,c3657444.filter2,tp,LOCATION_MZONE,0,1,1,e:GetHandler())
-	g:AddCard(e:GetHandler())
+	local g=Duel.SelectTarget(tp,c3657444.filter2,tp,LOCATION_MZONE,0,1,1,c)
+	g:AddCard(c)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,2,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,2)
 end

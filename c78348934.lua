@@ -1,4 +1,5 @@
 --破壊剣士の宿命
+---@param c Card
 function c78348934.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -27,7 +28,7 @@ function c78348934.filter1(c,e)
 	return c:IsType(TYPE_MONSTER) and c:IsAbleToRemove() and c:IsCanBeEffectTarget(e)
 end
 function c78348934.fselect(g)
-	return g:GetClassCount(Card.GetRace)==1
+	return aux.SameValueCheck(g,Card.GetRace)
 end
 function c78348934.filter3(c)
 	return c:IsFaceup() and c:IsSetCard(0xd6,0xd7)

@@ -1,4 +1,5 @@
 --黒熔龍騎ヴォルニゲシュ
+---@param c Card
 function c38694052.initial_effect(c)
 	--xyz procedure
 	aux.AddXyzProcedure(c,nil,7,2)
@@ -70,6 +71,7 @@ function c38694052.desop(e,tp,eg,ep,ev,re,r,rp)
 				local e1=Effect.CreateEffect(c)
 				e1:SetType(EFFECT_TYPE_SINGLE)
 				e1:SetCode(EFFECT_UPDATE_ATTACK)
+				e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
 				e1:SetValue(star*300)
 				e1:SetReset(RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END,2)
 				tc:RegisterEffect(e1)

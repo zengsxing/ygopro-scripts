@@ -1,4 +1,5 @@
 --A・∀・RR
+---@param c Card
 function c55262310.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -69,7 +70,7 @@ function c55262310.filter(c,tp)
 end
 function c55262310.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and c55262310.filter(chkc,tp) end
-	if chk==0 then return e:IsHasType(EFFECT_TYPE_ACTIVATE)
+	if chk==0 then return e:IsCostChecked()
 		and Duel.IsExistingTarget(c55262310.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_EQUIP)
 	local g=Duel.SelectTarget(tp,c55262310.filter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,tp)
@@ -95,7 +96,9 @@ function c55262310.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c55262310.eqlimit(e,c)
-	return c:IsSetCard(0x15b) or c:IsControler(1-e:GetHandlerPlayer())
+	return e:GetHandler():GetEquipTarget()==c
+		or c:IsControler(e:GetHandlerPlayer()) and c:IsSetCard(0x15b)
+		or c:IsControler(1-e:GetHandlerPlayer())
 end
 function c55262310.tdcon(e,tp,eg,ep,ev,re,r,rp)
 	local ec=e:GetHandler():GetEquipTarget()

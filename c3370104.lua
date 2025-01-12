@@ -1,4 +1,5 @@
 --サイバー・フェニックス
+---@param c Card
 function c3370104.initial_effect(c)
 	--disable
 	local e1=Effect.CreateEffect(c)
@@ -46,7 +47,7 @@ function c3370104.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_BATTLE) and c:IsPreviousPosition(POS_FACEUP)
 end
-function c3370104.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c3370104.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsPlayerCanDraw(tp,1) end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)

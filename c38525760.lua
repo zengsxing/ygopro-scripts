@@ -1,4 +1,5 @@
 --陽炎獣 サーベラス
+---@param c Card
 function c38525760.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,6 @@ function c38525760.initial_effect(c)
 	--summon
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(38525760,0))
-	e2:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_SUMMON_PROC)
 	e2:SetCondition(c38525760.ntcon)

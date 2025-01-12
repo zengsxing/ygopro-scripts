@@ -1,4 +1,5 @@
 --無許可の再奇動
+---@param c Card
 function c12524259.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -12,6 +13,7 @@ function c12524259.initial_effect(c)
 	e1:SetOperation(c12524259.activate)
 	c:RegisterEffect(e1)
 end
+c12524259.has_text_type=TYPE_UNION
 function c12524259.tgfilter(c,tp)
 	return c:IsFaceup() and c:IsRace(RACE_MACHINE)
 		and Duel.IsExistingMatchingCard(c12524259.eqfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,nil,c,tp)

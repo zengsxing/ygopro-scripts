@@ -1,4 +1,5 @@
 --大儺主水
+---@param c Card
 function c73898890.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c73898890.lcheck)
@@ -23,7 +24,7 @@ function c73898890.initial_effect(c)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetHintTiming(0,TIMINGS_CHECK_MONSTER+TIMING_END_PHASE)
-	e2:SetCountLimit(1,897409)
+	e2:SetCountLimit(1,73898891)
 	e2:SetCost(c73898890.spcost)
 	e2:SetCondition(c73898890.spcon)
 	e2:SetTarget(c73898890.sptg)

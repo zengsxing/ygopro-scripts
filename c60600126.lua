@@ -1,4 +1,5 @@
 --エマージェンシー・サイバー
+---@param c Card
 function c60600126.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -60,7 +61,7 @@ function c60600126.filter(c)
 	return ((c:IsSetCard(0x1093) and c:IsType(TYPE_MONSTER)) or (c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_MACHINE) and not c:IsSummonableCard()))
 		and c:IsType(TYPE_MONSTER) and c:IsAbleToHand()
 end
-function c60600126.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c60600126.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c60600126.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

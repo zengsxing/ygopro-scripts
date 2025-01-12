@@ -1,4 +1,5 @@
 --ユニオン・ライダー
+---@param c Card
 function c11743119.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
@@ -13,6 +14,7 @@ function c11743119.initial_effect(c)
 	e1:SetOperation(c11743119.eqop)
 	c:RegisterEffect(e1)
 end
+c11743119.has_text_type=TYPE_UNION
 function c11743119.eqcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local ec=e:GetLabelObject()
@@ -43,7 +45,7 @@ function c11743119.eqop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_EQUIP_LIMIT)
-		e1:SetProperty(EFFECT_FLAG_COPY_INHERIT+EFFECT_FLAG_OWNER_RELATE)
+		e1:SetProperty(EFFECT_FLAG_OWNER_RELATE)
 		e1:SetReset(RESET_EVENT+RESETS_STANDARD)
 		e1:SetValue(c11743119.eqlimit)
 		tc:RegisterEffect(e1)

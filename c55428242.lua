@@ -1,4 +1,5 @@
 --アトラの蟲惑魔
+---@param c Card
 function c55428242.initial_effect(c)
 	--immune
 	local e1=Effect.CreateEffect(c)
@@ -10,11 +11,13 @@ function c55428242.initial_effect(c)
 	c:RegisterEffect(e1)
 	--
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(55428242,0))
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTargetRange(LOCATION_HAND,0)
 	e2:SetTarget(c55428242.etarget)
+	e2:SetValue(55428242)
 	c:RegisterEffect(e2)
 	--
 	local e3=Effect.CreateEffect(c)

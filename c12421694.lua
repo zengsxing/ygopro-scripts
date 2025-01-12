@@ -1,4 +1,5 @@
 --閃刀姫－カイナ
+---@param c Card
 function c12421694.initial_effect(c)
 	c:SetSPSummonOnce(12421694)
 	--link summon
@@ -30,7 +31,7 @@ function c12421694.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c12421694.matfilter(c)
-	return c:IsLinkSetCard(0x1115) and c:IsLinkAttribute(ATTRIBUTE_ALL-ATTRIBUTE_EARTH)
+	return c:IsLinkSetCard(0x1115) and c:IsLinkAttribute(ATTRIBUTE_ALL&~ATTRIBUTE_EARTH)
 end
 function c12421694.atktg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsLocation(LOCATION_MZONE) and chkc:IsControler(1-tp) and chkc:IsFaceup() end
@@ -49,7 +50,7 @@ function c12421694.atkop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c12421694.reccon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:IsActiveType(TYPE_SPELL) and re:GetHandler():IsSetCard(0x115) and rp==tp and e:GetHandler():GetFlagEffect(1)>0
+	return re and re:IsActiveType(TYPE_SPELL) and re:GetHandler():IsSetCard(0x115) and rp==tp and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0
 end
 function c12421694.recop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Recover(tp,100,REASON_EFFECT)

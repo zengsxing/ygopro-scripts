@@ -1,4 +1,5 @@
 --SPYRAL－ダンディ
+---@param c Card
 function c41091257.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -44,7 +45,7 @@ function c41091257.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c41091257.descon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:GetHandler():IsSetCard(0xee)
+	return e:GetHandler():IsSpecialSummonSetCard(0xee)
 end
 function c41091257.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsControler(1-tp) and chkc:IsType(TYPE_SPELL+TYPE_TRAP) end

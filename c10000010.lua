@@ -1,4 +1,5 @@
 --ラーの翼神竜
+---@param c Card
 function c10000010.initial_effect(c)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)
@@ -69,7 +70,8 @@ function c10000010.setcon(e,c,minc)
 	return false
 end
 function c10000010.splimit(e,se,sp,st)
-	return Duel.IsPlayerAffectedByEffect(sp,41044418) and st&SUMMON_VALUE_MONSTER_REBORN>0
+	return Duel.IsPlayerAffectedByEffect(sp,41044418)
+		and (st&SUMMON_VALUE_MONSTER_REBORN>0 or se:GetHandler():IsCode(83764718))
 		and e:GetHandler():IsControler(sp) and e:GetHandler():IsLocation(LOCATION_GRAVE)
 end
 function c10000010.genchainlm(c)

@@ -1,4 +1,5 @@
 --連鎖除外
+---@param c Card
 function c57139487.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -18,7 +19,7 @@ end
 function c57139487.filter(c)
 	return c:IsFaceup() and c:GetAttack()<=1000 and c:IsAbleToRemove()
 end
-function c57139487.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c57139487.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return eg:IsExists(c57139487.filter,1,nil) end
 	local g=eg:Filter(c57139487.filter,nil)
 	Duel.SetTargetCard(g)

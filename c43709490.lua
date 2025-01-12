@@ -1,5 +1,7 @@
---被検体ミュートリアGB－８８
+--被検体ミュートリアGB－88
+---@param c Card
 function c43709490.initial_effect(c)
+	aux.AddCodeList(c,34572613)
 	--self spsummon
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(43709490,0))

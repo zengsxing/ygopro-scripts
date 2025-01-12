@@ -1,5 +1,7 @@
 --U.A.ハイパー・スタジアム
+---@param c Card
 function c12931061.initial_effect(c)
+	aux.AddCodeList(c,19814508)
 	--Activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH+CATEGORY_GRAVE_ACTION)

@@ -1,4 +1,5 @@
 --シャドウ・リチュア
+---@param c Card
 function c29888389.initial_effect(c)
 	--search
 	local e1=Effect.CreateEffect(c)
@@ -32,7 +33,7 @@ end
 function c29888389.filter(c)
 	return c:IsSetCard(0x3a) and c:GetType()==TYPE_SPELL+TYPE_RITUAL and c:IsAbleToHand()
 end
-function c29888389.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c29888389.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c29888389.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

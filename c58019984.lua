@@ -1,5 +1,6 @@
 --新世壊成劫
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--Activate
@@ -46,6 +47,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if tc:IsRelateToEffect(e) and Duel.SSet(tp,tc)>0 then
 		if tc:IsType(TYPE_QUICKPLAY) then
 			local e1=Effect.CreateEffect(c)
+			e1:SetDescription(aux.Stringid(58019984,2))
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 			e1:SetCode(EFFECT_QP_ACT_IN_SET_TURN)
@@ -54,6 +56,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		end
 		if tc:IsType(TYPE_TRAP) then
 			local e1=Effect.CreateEffect(c)
+			e1:SetDescription(aux.Stringid(58019984,2))
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 			e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)

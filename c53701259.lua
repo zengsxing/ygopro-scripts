@@ -1,4 +1,5 @@
 --覚醒の三幻魔
+---@param c Card
 function c53701259.initial_effect(c)
 	aux.AddCodeList(c,6007213,32491822,69890967)
 	--Activate
@@ -54,11 +55,11 @@ function c53701259.initial_effect(c)
 	--remove
 	local e7=Effect.CreateEffect(c)
 	e7:SetType(EFFECT_TYPE_FIELD)
-	e7:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
+	e7:SetProperty(EFFECT_FLAG_SET_AVAILABLE+EFFECT_FLAG_IGNORE_RANGE+EFFECT_FLAG_IGNORE_IMMUNE)
 	e7:SetCode(EFFECT_TO_GRAVE_REDIRECT)
 	e7:SetRange(LOCATION_SZONE)
 	e7:SetValue(LOCATION_REMOVED)
-	e7:SetTargetRange(0xfe,0xff)
+	e7:SetTargetRange(0,LOCATION_DECK)
 	e7:SetTarget(c53701259.rmtg)
 	e7:SetCondition(c53701259.rmcon)
 	c:RegisterEffect(e7)
@@ -92,7 +93,7 @@ function c53701259.lpcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c53701259.lpcon1(e,tp,eg,ep,ev,re,r,rp)
 	return c53701259.lpcon(e,tp,eg,ep,ev,re,r,rp)
-		and (not re:IsHasType(EFFECT_TYPE_ACTIONS) or re:IsHasType(EFFECT_TYPE_CONTINUOUS))
+		and not Duel.IsChainSolving()
 end
 function c53701259.lpop1(e,tp,eg,ep,ev,re,r,rp)
 	local lg=eg:Filter(c53701259.cfilter,nil,1-tp)
@@ -101,7 +102,7 @@ function c53701259.lpop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c53701259.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return c53701259.lpcon(e,tp,eg,ep,ev,re,r,rp)
-		and re:IsHasType(EFFECT_TYPE_ACTIONS) and not re:IsHasType(EFFECT_TYPE_CONTINUOUS)
+		and Duel.IsChainSolving()
 end
 function c53701259.regop(e,tp,eg,ep,ev,re,r,rp)
 	local lg=eg:Filter(c53701259.cfilter,nil,1-tp)
@@ -136,8 +137,7 @@ function c53701259.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.NegateEffect(ev)
 end
 function c53701259.rmtg(e,c)
-	return c:GetOwner()~=e:GetHandlerPlayer() and not c:IsLocation(LOCATION_OVERLAY)
-		and not c:IsType(TYPE_SPELL+TYPE_TRAP)
+	return c:GetOwner()~=e:GetHandlerPlayer() and aux.DimensionalFissureTarget(e,c)
 end
 function c53701259.rmcon(e)
 	local tp=e:GetHandlerPlayer()

@@ -1,4 +1,5 @@
 --双天の使命
+---@param c Card
 function c75157704.initial_effect(c)
 	--copy spell
 	local e1=Effect.CreateEffect(c)
@@ -22,6 +23,7 @@ end
 function c75157704.filter(c)
 	return c:IsSetCard(0x14f) and not c:IsCode(75157704) and c:IsType(TYPE_SPELL+TYPE_TRAP) and c:CheckActivateEffect(false,true,false)~=nil
 end
+---dynamic target
 function c75157704.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then
 		if e:GetLabel()==0 then return false end

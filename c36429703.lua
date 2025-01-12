@@ -1,4 +1,5 @@
 --RR－ワイズ・ストリクス
+---@param c Card
 function c36429703.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,c36429703.matfilter,2,2)
@@ -81,6 +82,7 @@ function c36429703.setop(e,tp,eg,ep,ev,re,r,rp)
 	if tc and Duel.SSet(tp,tc)~=0 then
 		if tc:IsType(TYPE_QUICKPLAY) then
 			local e1=Effect.CreateEffect(e:GetHandler())
+			e1:SetDescription(aux.Stringid(36429703,2))
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 			e1:SetCode(EFFECT_QP_ACT_IN_SET_TURN)

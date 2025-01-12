@@ -1,4 +1,5 @@
 --古生代化石騎士 スカルキング
+---@param c Card
 function c96897184.initial_effect(c)
 	aux.AddCodeList(c,59419719)
 	--fusion material
@@ -9,7 +10,7 @@ function c96897184.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_UNCOPYABLE)
 	e1:SetCode(EFFECT_SPSUMMON_CONDITION)
-	e1:SetValue(c96897184.splimit)
+	e1:SetValue(aux.FossilFusionLimit)
 	c:RegisterEffect(e1)
 	--pierce
 	local e2=Effect.CreateEffect(c)
@@ -39,9 +40,6 @@ function c96897184.initial_effect(c)
 end
 function c96897184.matfilter(c)
 	return c:IsLevelAbove(7) and c:IsFusionType(TYPE_MONSTER)
-end
-function c96897184.splimit(e,se,sp,st)
-	return se:GetHandler():IsCode(59419719) or not e:GetHandler():IsLocation(LOCATION_EXTRA)
 end
 function c96897184.spcon(e,tp,eg,ep,ev,re,r,rp)
 	return Duel.GetTurnPlayer()==1-tp

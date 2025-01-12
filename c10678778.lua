@@ -1,4 +1,5 @@
 --魔海城アイガイオン
+---@param c Card
 function c10678778.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,8,2)
@@ -38,6 +39,7 @@ end
 function c10678778.rmop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetMatchingGroup(c10678778.rmfilter,tp,0,LOCATION_EXTRA,nil)
 	if g:GetCount()==0 then return end
+	Duel.ShuffleExtra(1-tp)
 	local tc=g:RandomSelect(tp,1):GetFirst()
 	Duel.Remove(tc,POS_FACEUP,REASON_EFFECT)
 	local atk=tc:GetAttack()

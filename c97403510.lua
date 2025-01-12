@@ -1,4 +1,5 @@
 --No.92 偽骸神龍 Heart－eartH Dragon
+---@param c Card
 function c97403510.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,9,3)
@@ -86,7 +87,7 @@ function c97403510.rmop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c97403510.spcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetOverlayCount()>0
+	return e:GetHandler():IsReason(REASON_DESTROY) and e:GetHandler():GetPreviousOverlayCountOnField()>0
 end
 function c97403510.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return e:GetHandler():IsRelateToEffect(e) and Duel.GetLocationCount(tp,LOCATION_MZONE)>0

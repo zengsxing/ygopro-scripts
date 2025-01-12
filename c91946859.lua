@@ -1,4 +1,5 @@
 --応身の機械天使
+---@param c Card
 function c91946859.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -42,8 +43,8 @@ function c91946859.spfilter(c,e,tp)
 	return c:GetType()&0x81==0x81 and c:IsSetCard(0x2093) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_RITUAL,tp,true,false)
 end
 function c91946859.spcost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroupEx(tp,c91946859.cfilter,1,nil,e,tp) end
-	local g=Duel.SelectReleaseGroupEx(tp,c91946859.cfilter,1,1,nil,e,tp)
+	if chk==0 then return Duel.CheckReleaseGroupEx(tp,c91946859.cfilter,1,REASON_COST,true,nil,e,tp) end
+	local g=Duel.SelectReleaseGroupEx(tp,c91946859.cfilter,1,1,REASON_COST,true,nil,e,tp)
 	Duel.Release(g,REASON_COST)
 end
 function c91946859.sptg(e,tp,eg,ep,ev,re,r,rp,chk)

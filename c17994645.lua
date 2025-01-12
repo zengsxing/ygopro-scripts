@@ -1,4 +1,5 @@
 --A BF－雨隠れのサヨ
+---@param c Card
 function c17994645.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1,1)
@@ -27,6 +28,7 @@ function c17994645.initial_effect(c)
 	e3:SetValue(c17994645.valcon)
 	c:RegisterEffect(e3)
 end
+c17994645.treat_itself_tuner=true
 function c17994645.valcheck(e,c)
 	local g=c:GetMaterial()
 	if g:IsExists(Card.IsSetCard,1,nil,0x33) then

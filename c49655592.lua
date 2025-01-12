@@ -1,4 +1,5 @@
 --F.A.ウィップクロッサー
+---@param c Card
 function c49655592.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)
@@ -34,6 +35,7 @@ function c49655592.initial_effect(c)
 	e4:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
 	e4:SetCode(EVENT_CHAINING)
 	e4:SetRange(LOCATION_MZONE)
+	e4:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e4:SetCondition(c49655592.lvcon)
 	e4:SetOperation(c49655592.lvop)
 	c:RegisterEffect(e4)
@@ -45,6 +47,7 @@ function c49655592.initial_effect(c)
 	e5:SetTargetRange(0,1)
 	e5:SetCode(EFFECT_CANNOT_DISCARD_HAND)
 	e5:SetCondition(c49655592.excon)
+	e5:SetTarget(c49655592.extarget)
 	e5:SetValue(1)
 	c:RegisterEffect(e5)
 	local e6=Effect.CreateEffect(c)
@@ -92,4 +95,7 @@ function c49655592.costop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c49655592.excon(e)
 	return e:GetHandler():IsLevelAbove(7)
+end
+function c49655592.extarget(e,dc,re,r)
+	return r&REASON_COST==REASON_COST
 end

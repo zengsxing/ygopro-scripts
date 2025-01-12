@@ -1,4 +1,5 @@
 --クリストロン・エントリー
+---@param c Card
 function c52176579.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -14,6 +15,7 @@ function c52176579.initial_effect(c)
 	e2:SetCategory(CATEGORY_TOGRAVE)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
 	e2:SetCode(EVENT_FREE_CHAIN)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetRange(LOCATION_GRAVE)
 	e2:SetCountLimit(1,52176579)
 	e2:SetCondition(aux.exccon)

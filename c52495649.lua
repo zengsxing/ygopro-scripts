@@ -1,5 +1,6 @@
 --バラムニエル・ド・ヌーベルズ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon success
@@ -48,10 +49,12 @@ function s.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function s.spcon1(e,tp,eg,ep,ev,re,r,rp)
-	return not e:GetHandler():IsSummonType(SUMMON_VALUE_NOUVELLEZ)
+	local c=e:GetHandler()
+	return c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_MONSTER==0 or not c:IsSpecialSummonSetCard(0x196)
 end
 function s.spcon2(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsSummonType(SUMMON_VALUE_NOUVELLEZ)
+	local c=e:GetHandler()
+	return c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x196)
 end
 function s.relfilter(c)
 	return c:IsReleasableByEffect() and c:IsAttackPos()
@@ -76,7 +79,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 		local tc=Duel.SelectMatchingCard(tp,s.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp):GetFirst()
 		if tc then
-			Duel.SpecialSummon(tc,SUMMON_VALUE_NOUVELLEZ,tp,tp,true,false,POS_FACEUP)
+			Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
 		end
 	end
 end

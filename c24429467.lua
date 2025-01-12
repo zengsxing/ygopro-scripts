@@ -1,4 +1,5 @@
 --魔導変換
+---@param c Card
 function c24429467.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--Activate
@@ -36,7 +37,7 @@ end
 function c24429467.acop(e,tp,eg,ep,ev,re,r,rp)
 	local p=Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_PLAYER)
 	local c=e:GetHandler()
-	if re:IsActiveType(TYPE_MONSTER) and p~=tp and c:GetFlagEffect(1)>0 then
+	if re:IsActiveType(TYPE_MONSTER) and p~=tp and c:GetFlagEffect(FLAG_ID_CHAINING)>0 then
 		c:AddCounter(0x1,1)
 	end
 end

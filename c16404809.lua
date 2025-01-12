@@ -1,4 +1,5 @@
 --クリバンデット
+---@param c Card
 function c16404809.initial_effect(c)
 	--mill
 	local e1=Effect.CreateEffect(c)
@@ -9,7 +10,7 @@ function c16404809.initial_effect(c)
 	c:RegisterEffect(e1)
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(16404809,0))
-	e2:SetCategory(CATEGORY_TOHAND+CATEGORY_DECKDES)
+	e2:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND+CATEGORY_DECKDES)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EVENT_PHASE+PHASE_END)

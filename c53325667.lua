@@ -1,5 +1,7 @@
 --ガーデン・ローズ・メイデン
+---@param c Card
 function c53325667.initial_effect(c)
+	aux.AddCodeList(c,71645242)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

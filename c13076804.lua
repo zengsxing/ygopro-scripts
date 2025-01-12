@@ -1,5 +1,6 @@
 --カオス・デーモン－混沌の魔神－
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_LIGHT),aux.NonTuner(Card.IsAttribute,ATTRIBUTE_DARK),1)
@@ -47,13 +48,8 @@ function s.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
-function s.checkfilter(c)
-	return not c:IsType(TYPE_TOKEN)
-end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(s.checkfilter,1,nil) then
-		Duel.RegisterFlagEffect(0,id,RESET_PHASE+PHASE_END,0,1)
-	end
+	Duel.RegisterFlagEffect(0,id,RESET_PHASE+PHASE_END,0,1)
 end
 function s.rmcon(e)
 	return Duel.GetFlagEffect(0,id)>0

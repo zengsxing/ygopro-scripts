@@ -1,4 +1,5 @@
 --ゲットライド！
+---@param c Card
 function c91597389.initial_effect(c)
 	--equip
 	local e1=Effect.CreateEffect(c)
@@ -10,6 +11,7 @@ function c91597389.initial_effect(c)
 	e1:SetOperation(c91597389.operation)
 	c:RegisterEffect(e1)
 end
+c91597389.has_text_type=TYPE_UNION
 function c91597389.filter(c,tp)
 	return c:IsType(TYPE_UNION) and Duel.IsExistingMatchingCard(c91597389.filter2,tp,LOCATION_MZONE,0,1,nil,c)
 end

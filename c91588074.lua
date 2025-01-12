@@ -1,4 +1,5 @@
 --創星神 tierra
+---@param c Card
 function c91588074.initial_effect(c)
 	c:EnableReviveLimit()
 	--special summon
@@ -59,7 +60,7 @@ function c91588074.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	if cg:GetCount()>0 then
 		Duel.ConfirmCards(1-tp,cg)
 	end
-	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c91588074.tdfilter(c)

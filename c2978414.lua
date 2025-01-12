@@ -1,4 +1,5 @@
 --No.46 神影龍ドラッグルーオン
+---@param c Card
 function c2978414.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_DRAGON),8,2)
@@ -49,7 +50,7 @@ function c2978414.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	e:GetHandler():RemoveOverlayCard(tp,1,1,REASON_COST)
 end
 function c2978414.spfilter(c,e,tp)
-	return c:IsRace(RACE_DRAGON) and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
+	return c:IsRace(RACE_DRAGON) and c:IsCanBeSpecialSummoned(e,0,tp,false,aux.DragonXyzSpSummonType(c))
 end
 function c2978414.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
@@ -61,7 +62,10 @@ function c2978414.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local g=Duel.SelectMatchingCard(tp,c2978414.spfilter,tp,LOCATION_HAND,0,1,1,nil,e,tp)
 	if g:GetCount()>0 then
-		Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP)
+		local sc=g:GetFirst()
+		if Duel.SpecialSummon(g,0,tp,tp,false,aux.DragonXyzSpSummonType(sc),POS_FACEUP)~=0 and aux.DragonXyzSpSummonType(sc) then
+			sc:CompleteProcedure()
+		end
 	end
 end
 function c2978414.ctfilter(c)

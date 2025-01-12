@@ -1,4 +1,5 @@
 --魔鍵－マフテア
+---@param c Card
 function c99426088.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -34,7 +35,7 @@ end
 function c99426088.frcheck(tp,sg,fc)
 	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=1
 end
-function c99426088.gcheck(sg)
+function c99426088.gcheck(sg,ec)
 	return sg:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=1
 end
 function c99426088.target(e,tp,eg,ep,ev,re,r,rp,chk)

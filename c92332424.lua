@@ -1,4 +1,5 @@
 --竜剣士マジェスティP
+---@param c Card
 function c92332424.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
@@ -98,7 +99,8 @@ function c92332424.efftg(e,c)
 	return c:IsSetCard(0xc7)
 end
 function c92332424.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return e:GetHandler():IsSummonType(SUMMON_TYPE_PENDULUM) or (re and re:GetHandler():IsSetCard(0xc7))
+	local c=e:GetHandler()
+	return c:IsSummonType(SUMMON_TYPE_PENDULUM) or c:IsSpecialSummonSetCard(0xc7)
 end
 function c92332424.thfilter(c)
 	return c:IsType(TYPE_FIELD) and c:IsAbleToHand()

@@ -1,4 +1,5 @@
 --魔力隔壁
+---@param c Card
 function c84117021.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,8 @@ end
 function c84117021.filter(c)
 	return c:IsFaceup() and c:IsRace(RACE_SPELLCASTER)
 end
-function c84117021.target(e,tp,eg,ep,ev,re,r,rp,chk)
+function c84117021.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+	if chkc then return chkc:IsControler(tp) and chkc:IsLocation(LOCATION_MZONE) and c84117021.filter(chkc) end
 	if chk==0 then return true end
 	local opt=0
 	if Duel.IsExistingTarget(c84117021.filter,tp,LOCATION_MZONE,0,1,nil) then

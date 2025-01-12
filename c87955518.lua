@@ -1,5 +1,6 @@
 --Recette de Spécialité～料理長自慢のレシピ～
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -40,7 +41,7 @@ function s.negtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	Duel.SetOperationInfo(0,CATEGORY_NEGATE,eg,1,0,0)
 end
 function s.descfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x196) and c:GetType()&0x81==0x81 and c:IsSummonType(SUMMON_VALUE_NOUVELLEZ)
+	return c:IsFaceup() and c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x196)
 end
 function s.negop(e,tp,eg,ep,ev,re,r,rp)
 	local rc=re:GetHandler()

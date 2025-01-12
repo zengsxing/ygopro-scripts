@@ -1,4 +1,5 @@
 --原子ホタル
+---@param c Card
 function c87340664.initial_effect(c)
 	--damage
 	local e1=Effect.CreateEffect(c)
@@ -16,7 +17,7 @@ function c87340664.condition(e,tp,eg,ep,ev,re,r,rp)
 	e:SetLabel(e:GetHandler():GetReasonPlayer())
 	return e:GetHandler():IsReason(REASON_BATTLE) and e:GetHandler():IsPreviousPosition(POS_FACEUP)
 end
-function c87340664.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c87340664.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetTargetPlayer(e:GetLabel())
 	Duel.SetTargetParam(1000)

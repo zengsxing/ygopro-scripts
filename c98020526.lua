@@ -1,4 +1,5 @@
 --セイヴァー・ミラージュ
+---@param c Card
 function c98020526.initial_effect(c)
 	aux.AddCodeList(c,44508094)
 	--Activate
@@ -80,7 +81,7 @@ function c98020526.activate(e,tp,eg,ep,ev,re,r,rp)
 		Duel.RegisterFlagEffect(tp,98020526,RESET_PHASE+PHASE_END,0,1)
 	elseif opval[op]==2 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-		local rg=Duel.SelectMatchingCard(tp,aux.NecroValleyFilter(c98020526.rfilter),tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil)
+		local rg=aux.SelectCardFromFieldFirst(tp,aux.NecroValleyFilter(c98020526.rfilter),tp,0,LOCATION_MZONE+LOCATION_GRAVE,1,1,nil)
 		Duel.HintSelection(rg)
 		Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
 		Duel.RegisterFlagEffect(tp,98020527,RESET_PHASE+PHASE_END,0,1)

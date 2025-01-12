@@ -1,5 +1,6 @@
 --ヴァルモニカ・ヴェルサーレ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(id,0))
@@ -19,7 +20,9 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp,op)
 		op=aux.SelectFromOptions(p,{true,aux.Stringid(id,1)},{true,aux.Stringid(id,2)})
 	end
 	if op==1 then
-		if Duel.Recover(tp,500,REASON_EFFECT)<1 or not Duel.SelectYesNo(tp,aux.Stringid(id,3)) then return end
+		if Duel.Recover(tp,500,REASON_EFFECT)<1
+			or not Duel.IsExistingMatchingCard(Card.IsAbleToHand,tp,LOCATION_DECK,0,1,nil)
+			or not Duel.SelectYesNo(tp,aux.Stringid(id,3)) then return end
 		local g=Duel.GetMatchingGroup(Card.IsSetCard,tp,LOCATION_DECK,0,nil,0x1a3)
 		local dct=Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)
 		local seq=-1

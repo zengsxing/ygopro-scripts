@@ -1,4 +1,5 @@
 --ジェイドナイト
+---@param c Card
 function c44364207.initial_effect(c)
 	--indes
 	local e1=Effect.CreateEffect(c)
@@ -37,7 +38,7 @@ end
 function c44364207.filter(c)
 	return c:IsRace(RACE_MACHINE) and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsLevel(4) and c:IsAbleToHand()
 end
-function c44364207.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c44364207.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c44364207.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_DECK)
 end

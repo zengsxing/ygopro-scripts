@@ -1,4 +1,5 @@
 --Live☆Twin キスキル
+---@param c Card
 function c36326160.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -6,7 +7,7 @@ function c36326160.initial_effect(c)
 	e1:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
-	e1:SetProperty(EFFECT_FLAG_DELAY)
+	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_ACTIVATE_CONDITION)
 	e1:SetCountLimit(1,36326160)
 	e1:SetCondition(c36326160.spcon)
 	e1:SetTarget(c36326160.sptg)

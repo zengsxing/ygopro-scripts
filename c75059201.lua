@@ -1,4 +1,5 @@
 --F.A.ターボチャージャー
+---@param c Card
 function c75059201.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)
@@ -33,6 +34,7 @@ function c75059201.initial_effect(c)
 	e4:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
 	e4:SetCode(EVENT_CHAINING)
 	e4:SetRange(LOCATION_MZONE)
+	e4:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e4:SetCondition(c75059201.lvcon)
 	e4:SetOperation(c75059201.lvop)
 	c:RegisterEffect(e4)

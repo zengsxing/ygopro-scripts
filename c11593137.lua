@@ -1,4 +1,5 @@
 --混沌の落とし穴
+---@param c Card
 function c11593137.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)
@@ -21,7 +22,7 @@ function c11593137.filter(c)
 	return c:IsAttribute(0x30) and c:IsAbleToRemove()
 end
 function c11593137.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0 and eg:IsExists(c11593137.filter,1,nil)
+	return aux.NegateSummonCondition() and eg:IsExists(c11593137.filter,1,nil)
 end
 function c11593137.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.CheckLPCost(tp,2000) end

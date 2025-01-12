@@ -1,4 +1,5 @@
 --電脳堺狐－仙々
+---@param c Card
 function c92519087.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
@@ -43,7 +44,7 @@ function c92519087.rtcon(e,tp,eg,ep,ev,re,r,rp)
 	local at=Duel.GetAttacker()
 	return at and at:IsControler(tp)
 end
-function c92519087.rttg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c92519087.rttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c92519087.tgfilter,tp,LOCATION_REMOVED,LOCATION_REMOVED,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,PLAYER_ALL,LOCATION_REMOVED)
 end

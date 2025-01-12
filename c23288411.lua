@@ -1,5 +1,6 @@
 --冥骸合竜－メメントラル・テクトリカ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsum condition
@@ -67,7 +68,15 @@ function s.spstg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function s.spsop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
+	local hg=g:Filter(Card.IsLocation,nil,LOCATION_HAND)
+	if #hg>0 then
+		Duel.ConfirmCards(1-tp,hg)
+	end
+	local gg=g:Filter(Card.IsLocation,nil,LOCATION_GRAVE)
+	if #gg>0 then
+		Duel.HintSelection(gg)
+	end
+	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function s.acon(e)

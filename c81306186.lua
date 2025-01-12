@@ -1,4 +1,5 @@
 --リターン・オブ・ザ・ワールド
+---@param c Card
 function c81306186.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -92,6 +93,7 @@ function c81306186.spop(e,tp,eg,ep,ev,re,r,rp)
 	if tc then
 		rc:SetMaterial(Group.FromCards(tc))
 		if tc:IsLocation(LOCATION_GRAVE) then
+			Duel.HintSelection(Group.FromCards(tc))
 			if Duel.SendtoDeck(tc,nil,SEQ_DECKSHUFFLE,REASON_EFFECT+REASON_MATERIAL+REASON_RITUAL)==0 then return end
 		else
 			if Duel.Release(tc,REASON_EFFECT+REASON_MATERIAL+REASON_RITUAL)==0 then return end

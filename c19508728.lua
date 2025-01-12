@@ -1,4 +1,5 @@
 --月鏡の盾
+---@param c Card
 function c19508728.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -80,12 +81,11 @@ function c19508728.tdcost(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c19508728.tdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
-	local opt=Duel.SelectOption(tp,aux.Stringid(19508728,0),aux.Stringid(19508728,1))
-	e:SetLabel(opt)
 	Duel.SetOperationInfo(0,CATEGORY_TODECK,e:GetHandler(),1,0,0)
 end
 function c19508728.tdop(e,tp,eg,ep,ev,re,r,rp)
 	if e:GetHandler():IsRelateToEffect(e) then
-		Duel.SendtoDeck(e:GetHandler(),nil,e:GetLabel(),REASON_EFFECT)
+		local opt=Duel.SelectOption(tp,aux.Stringid(19508728,0),aux.Stringid(19508728,1))
+		Duel.SendtoDeck(e:GetHandler(),nil,opt,REASON_EFFECT)
 	end
 end

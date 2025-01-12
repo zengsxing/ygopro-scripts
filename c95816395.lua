@@ -1,4 +1,5 @@
 --どぐう
+---@param c Card
 function c95816395.initial_effect(c)
 	--to grave
 	local e1=Effect.CreateEffect(c)
@@ -16,7 +17,7 @@ function c95816395.regop(e,tp,eg,ep,ev,re,r,rp)
 		e1:SetCategory(CATEGORY_TOHAND+CATEGORY_SEARCH)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 		e1:SetCode(EVENT_PHASE+PHASE_END)
-		e1:SetCountLimit(1)
+		e1:SetCountLimit(1,95816395)
 		e1:SetRange(LOCATION_GRAVE)
 		e1:SetTarget(c95816395.thtg)
 		e1:SetOperation(c95816395.thop)

@@ -1,4 +1,5 @@
 --E・HERO ブラック・ネオス
+---@param c Card
 function c28677304.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -49,7 +50,7 @@ end
 function c28677304.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	local tc=Duel.GetFirstTarget()
-	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) then
+	if c:IsRelateToEffect(e) and tc:IsFaceup() and tc:IsRelateToEffect(e) and not tc:IsImmuneToEffect(e) then
 		c:SetCardTarget(tc)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_SINGLE)

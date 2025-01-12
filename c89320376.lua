@@ -1,4 +1,5 @@
 --星遺物の傀儡
+---@param c Card
 function c89320376.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -92,6 +93,7 @@ function c89320376.poscost(e,tp,eg,ep,ev,re,r,rp,chk)
 		and Duel.IsExistingMatchingCard(c89320376.cfilter,tp,LOCATION_GRAVE,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c89320376.cfilter,tp,LOCATION_GRAVE,0,1,1,nil)
+	Duel.HintSelection(g)
 	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 	c89320376.cost(e,tp,eg,ep,ev,re,r,rp,1)
 end

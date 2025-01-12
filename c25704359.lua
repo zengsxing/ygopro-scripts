@@ -1,4 +1,5 @@
 --憑依解放
+---@param c Card
 function c25704359.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -66,7 +67,7 @@ function c25704359.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 			att=bit.band(att,tc:GetOriginalAttribute())
 			tc=g:GetNext()
 		end
-		att=ATTRIBUTE_ALL-att
+		att=ATTRIBUTE_ALL&~att
 		e:SetLabel(att)
 		return Duel.IsExistingMatchingCard(c25704359.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp,att)
 	end

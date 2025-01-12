@@ -1,4 +1,5 @@
 --魔獣の大餌
+---@param c Card
 function c48814566.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -26,6 +27,7 @@ function c48814566.activate(e,tp,eg,ep,ev,re,r,rp)
 		local sg1=g1:Select(tp,1,#g2,nil)
 		if Duel.Remove(sg1,POS_FACEDOWN,REASON_EFFECT)~=0 and sg1:IsExists(Card.IsLocation,1,nil,LOCATION_REMOVED) then
 			local og1=Duel.GetOperatedGroup():Filter(Card.IsLocation,nil,LOCATION_REMOVED)
+			Duel.ShuffleExtra(1-tp)
 			local sg2=g2:RandomSelect(tp,#og1)
 			if Duel.Remove(sg2,POS_FACEUP,REASON_EFFECT+REASON_TEMPORARY)~=0 and sg2:IsExists(Card.IsLocation,1,nil,LOCATION_REMOVED) then
 				local c=e:GetHandler()

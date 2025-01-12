@@ -1,4 +1,5 @@
 --幻煌龍の戦渦
+---@param c Card
 function c34302287.initial_effect(c)
 	aux.AddCodeList(c,22702055)
 	--Activate
@@ -14,6 +15,7 @@ function c34302287.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act in hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(34302287,1))
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	e2:SetCondition(c34302287.handcon)

@@ -1,5 +1,6 @@
 --新世壊＝アムリターラ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,56099748)
 	--Activate
@@ -44,7 +45,7 @@ end
 function s.thfilter(c)
 	return c:IsType(TYPE_FIELD) and c:IsAbleToHand()
 end
-function s.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	local g=eg:Filter(s.filter,nil,tp)
 	local b1=g:IsExists(s.filter1,1,nil,e,tp)
@@ -109,6 +110,8 @@ function s.atkop(e,tp,eg,ep,ev,re,r,rp)
 	local g1=eg:Filter(Card.IsRelateToChain,nil):Filter(s.filter2,nil)
 	local g2=Duel.GetMatchingGroup(s.atkfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil)
 	if #g1~=0 and #g2~=0 then
+		Duel.HintSelection(g1)
+		Duel.HintSelection(g2)
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_OPERATECARD)
 		local tc=g1:Select(tp,1,1,nil):GetFirst()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
@@ -125,9 +128,12 @@ end
 function s.todeckop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=eg:Filter(Card.IsRelateToChain,nil):FilterSelect(tp,s.filter3,1,1,nil,e,tp)
-	if #g>0 and Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 and Duel.IsPlayerCanDraw(tp,1) then
-		Duel.ShuffleDeck(tp)
-		Duel.Draw(tp,1,REASON_EFFECT)
+	if #g>0 then
+		Duel.HintSelection(g)
+		if Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)>0 and Duel.IsPlayerCanDraw(tp,1) then
+			Duel.ShuffleDeck(tp)
+			Duel.Draw(tp,1,REASON_EFFECT)
+		end
 	end
 end
 function s.tohandop(e,tp,eg,ep,ev,re,r,rp)
@@ -137,6 +143,7 @@ function s.tohandop(e,tp,eg,ep,ev,re,r,rp)
 		local g=Duel.SelectMatchingCard(tp,s.thfilter,tp,LOCATION_GRAVE,0,1,1,nil)
 		if #g~=0 then
 			Duel.SendtoHand(g,nil,REASON_EFFECT)
+			Duel.ConfirmCards(1-tp,g)
 		end
 	end
 end

@@ -1,4 +1,5 @@
 --F.A.ライトニングマスター
+---@param c Card
 function c33158448.initial_effect(c)
 	c:EnableReviveLimit()
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
@@ -16,6 +17,7 @@ function c33158448.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
 	e3:SetCode(EVENT_CHAINING)
 	e3:SetRange(LOCATION_MZONE)
+	e3:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e3:SetCondition(c33158448.lvcon)
 	e3:SetOperation(c33158448.lvop)
 	c:RegisterEffect(e3)

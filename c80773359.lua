@@ -1,4 +1,5 @@
 --A BF－神立のオニマル
+---@param c Card
 function c80773359.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
@@ -36,6 +37,7 @@ function c80773359.initial_effect(c)
 	e4:SetOperation(c80773359.lvop)
 	c:RegisterEffect(e4)
 end
+c80773359.treat_itself_tuner=true
 function c80773359.valcheck(e,c)
 	local flag=0
 	local g=c:GetMaterial()

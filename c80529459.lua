@@ -1,5 +1,7 @@
 --スクラップ・ラプター
+---@param c Card
 function c80529459.initial_effect(c)
+	aux.AddCodeList(c,28388296)
 	--destroy
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(80529459,0))

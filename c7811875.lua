@@ -1,4 +1,5 @@
 --重力崩壊
+---@param c Card
 function c7811875.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)
@@ -18,7 +19,7 @@ function c7811875.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c7811875.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0 and eg:IsExists(Card.IsControler,1,nil,1-tp)
+	return aux.NegateSummonCondition() and eg:IsExists(Card.IsControler,1,nil,1-tp)
 end
 function c7811875.cfilter(c)
 	return c:IsFaceup() and c:IsType(TYPE_SYNCHRO) and c:IsAbleToGraveAsCost()

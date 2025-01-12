@@ -1,4 +1,5 @@
 --陽炎獣 スピンクス
+---@param c Card
 function c1409474.initial_effect(c)
 	--cannot be target
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,7 @@ function c1409474.initial_effect(c)
 	--guess
 	local e2=Effect.CreateEffect(c)
 	e2:SetDescription(aux.Stringid(1409474,0))
-	e2:SetCategory(CATEGORY_DECKDES)
+	e2:SetCategory(CATEGORY_DECKDES+CATEGORY_SPECIAL_SUMMON+CATEGORY_GRAVE_SPSUMMON)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCountLimit(1,1409474)
 	e2:SetRange(LOCATION_MZONE)

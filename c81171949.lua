@@ -1,4 +1,5 @@
 --ジャックポット7
+---@param c Card
 function c81171949.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -21,8 +22,7 @@ end
 function c81171949.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		c:CancelToGrave()
-		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT,tp,true)
 	end
 end
 function c81171949.rmcon(e,tp,eg,ep,ev,re,r,rp)

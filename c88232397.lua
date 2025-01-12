@@ -1,4 +1,5 @@
 --熟練の栗魔導士
+---@param c Card
 function c88232397.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	c:SetCounterLimit(0x1,3)
@@ -39,7 +40,7 @@ function c88232397.initial_effect(c)
 	c:RegisterEffect(e3)
 end
 function c88232397.acop(e,tp,eg,ep,ev,re,r,rp)
-	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
+	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0 then
 		e:GetHandler():AddCounter(0x1,1)
 	end
 end

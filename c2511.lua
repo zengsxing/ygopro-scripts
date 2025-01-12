@@ -1,4 +1,5 @@
 --白銀の城の狂時計
+---@param c Card
 function c2511.initial_effect(c)
 	--Trap activate in set turn
 	local e1=Effect.CreateEffect(c)
@@ -40,6 +41,7 @@ function c2511.acttg(e,c)
 end
 function c2511.operation(e,tp,eg,ep,ev,re,r,rp)
 	local e1=Effect.CreateEffect(e:GetHandler())
+	e1:SetDescription(aux.Stringid(2511,2))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)

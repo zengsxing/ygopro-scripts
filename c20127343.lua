@@ -1,4 +1,5 @@
 --A・ジェネクス・チェンジャー
+---@param c Card
 function c20127343.initial_effect(c)
 	--att change
 	local e1=Effect.CreateEffect(c)
@@ -17,7 +18,7 @@ function c20127343.costg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
 	local g=Duel.SelectTarget(tp,Card.IsFaceup,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local att=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL-g:GetFirst():GetAttribute())
+	local att=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL&~g:GetFirst():GetAttribute())
 	e:SetLabel(att)
 end
 function c20127343.cosop(e,tp,eg,ep,ev,re,r,rp)

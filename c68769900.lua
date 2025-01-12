@@ -1,4 +1,5 @@
 --海造賊－赤髭の航海士
+---@param c Card
 function c68769900.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -57,6 +58,7 @@ function c68769900.spop(e,tp,eg,ep,ev,re,r,rp)
 	local sg=Duel.SelectMatchingCard(tp,c68769900.spfilter,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,attr)
 	local sc=sg:GetFirst()
 	if sc and Duel.SpecialSummon(sc,0,tp,tp,false,false,POS_FACEUP)~=0 and sc:IsFaceup() and c:IsRelateToEffect(e) and c:IsControler(tp) then
+		if not c:IsRelateToEffect(e) or c:IsFacedown() then return end
 		if not Duel.Equip(tp,c,sc,false) then return end
 		--equip limit
 		local e1=Effect.CreateEffect(c)

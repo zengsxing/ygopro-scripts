@@ -1,4 +1,5 @@
 --憑依覚醒－デーモン・リーパー
+---@param c Card
 function c65268179.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)
@@ -62,7 +63,7 @@ function c65268179.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c65268179.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.SendtoGrave(g,REASON_COST)
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c65268179.condition(e,tp,eg,ep,ev,re,r,rp)

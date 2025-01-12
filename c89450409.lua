@@ -1,4 +1,5 @@
 --疾風のドラグニティ
+---@param c Card
 function c89450409.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -30,9 +31,6 @@ function c89450409.target(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c89450409.cfilter(c)
 	return c:IsSummonLocation(LOCATION_EXTRA)
-end
-function c89450409.matfilter(c)
-	return c:IsFaceup() and c:IsSetCard(0x29)
 end
 function c89450409.scfilter(c,mg)
 	return c:IsRace(RACE_DRAGON) and c:IsSynchroSummonable(nil,mg)
@@ -76,7 +74,7 @@ function c89450409.activate(e,tp,eg,ep,ev,re,r,rp)
 		cb:RegisterEffect(e4)
 	end
 	Duel.SpecialSummonComplete()
-	local mg=Duel.GetMatchingGroup(c89450409.matfilter,tp,LOCATION_MZONE,0,nil)
+	local mg=Duel.GetSynchroMaterial(tp):Filter(Card.IsSetCard,nil,0x29)
 	if success and Duel.IsExistingMatchingCard(c89450409.cfilter,tp,0,LOCATION_MZONE,1,nil)
 		and Duel.IsExistingMatchingCard(c89450409.scfilter,tp,LOCATION_EXTRA,0,1,nil,mg)
 		and Duel.SelectYesNo(tp,aux.Stringid(89450409,1)) then

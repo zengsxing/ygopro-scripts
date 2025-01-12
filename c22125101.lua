@@ -1,4 +1,5 @@
 --軌跡の魔術師
+---@param c Card
 function c22125101.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,aux.FilterBoolFunction(Card.IsLinkType,TYPE_EFFECT),2,2,c22125101.lcheck)
@@ -32,15 +33,13 @@ function c22125101.initial_effect(c)
 		c22125101.global_check=true
 		local ge1=Effect.CreateEffect(c)
 		ge1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
-		ge1:SetCode(EVENT_SPSUMMON_SUCCESS)
+		ge1:SetCode(EVENT_SPSUMMON_SUCCESS_G_P)
 		ge1:SetOperation(c22125101.checkop)
 		Duel.RegisterEffect(ge1,0)
 	end
 end
 function c22125101.checkop(e,tp,eg,ep,ev,re,r,rp)
-	if eg:IsExists(Card.IsSummonType,1,nil,SUMMON_TYPE_PENDULUM) then
-		Duel.RegisterFlagEffect(rp,22125101,RESET_PHASE+PHASE_END,0,1)
-	end
+	Duel.RegisterFlagEffect(rp,22125101,RESET_PHASE+PHASE_END,0,1)
 end
 function c22125101.lcheck(g)
 	return g:IsExists(Card.IsLinkType,1,nil,TYPE_PENDULUM)

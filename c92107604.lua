@@ -1,5 +1,6 @@
 --神碑の泉
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -8,6 +9,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act qp in hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(id,1))
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetCode(EFFECT_QP_ACT_IN_NTPHAND)
 	e2:SetRange(LOCATION_FZONE)

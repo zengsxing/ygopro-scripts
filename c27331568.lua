@@ -1,4 +1,5 @@
 --荘厳なる機械天使
+---@param c Card
 function c27331568.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -22,8 +23,8 @@ function c27331568.filter(c)
 	return c:IsFaceup() and c:IsAttribute(ATTRIBUTE_LIGHT) and c:IsRace(RACE_FAIRY)
 end
 function c27331568.cost(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return Duel.CheckReleaseGroupEx(tp,c27331568.cfilter,1,nil,tp) end
-	local g=Duel.SelectReleaseGroupEx(tp,c27331568.cfilter,1,1,nil,tp)
+	if chk==0 then return Duel.CheckReleaseGroupEx(tp,c27331568.cfilter,1,REASON_COST,true,nil,tp) end
+	local g=Duel.SelectReleaseGroupEx(tp,c27331568.cfilter,1,1,REASON_COST,true,nil,tp)
 	e:SetLabel(g:GetFirst():GetLevel())
 	Duel.Release(g,REASON_COST)
 end

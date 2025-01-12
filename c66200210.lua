@@ -1,4 +1,5 @@
 --幻獣機ハムストラット
+---@param c Card
 function c66200210.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)
@@ -14,7 +15,7 @@ function c66200210.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
-	e2:SetCondition(c66200210.indcon)
+	e2:SetCondition(aux.tkfcon)
 	e2:SetValue(1)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
@@ -45,9 +46,6 @@ end
 function c66200210.lvval(e,c)
 	local tp=c:GetControler()
 	return Duel.GetMatchingGroup(Card.IsCode,tp,LOCATION_MZONE,0,nil,31533705):GetSum(Card.GetLevel)
-end
-function c66200210.indcon(e)
-	return Duel.IsExistingMatchingCard(Card.IsType,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil,TYPE_TOKEN)
 end
 function c66200210.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

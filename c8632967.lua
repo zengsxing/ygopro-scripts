@@ -1,4 +1,5 @@
 --進化の宿命
+---@param c Card
 function c8632967.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -23,7 +24,8 @@ function c8632967.chainlm(e,rp,tp)
 	return tp==rp
 end
 function c8632967.sucfilter(c)
-	return c:IsSummonType(SUMMON_VALUE_EVOLTILE)
+	local typ=c:GetSpecialSummonInfo(SUMMON_INFO_TYPE)
+	return c:IsSummonType(SUMMON_VALUE_EVOLTILE) or (typ&TYPE_MONSTER~=0 and c:IsSpecialSummonSetCard(0x304e))
 end
 function c8632967.sucop(e,tp,eg,ep,ev,re,r,rp)
 	if eg:IsExists(c8632967.sucfilter,1,nil) and Duel.GetCurrentChain()==1 then

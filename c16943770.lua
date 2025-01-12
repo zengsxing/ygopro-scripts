@@ -1,4 +1,5 @@
 --幻獣機エアロスバード
+---@param c Card
 function c16943770.initial_effect(c)
 	--level
 	local e1=Effect.CreateEffect(c)
@@ -14,7 +15,7 @@ function c16943770.initial_effect(c)
 	e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetCode(EFFECT_INDESTRUCTABLE_BATTLE)
-	e2:SetCondition(c16943770.indcon)
+	e2:SetCondition(aux.tkfcon)
 	e2:SetValue(1)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
@@ -35,9 +36,6 @@ end
 function c16943770.lvval(e,c)
 	local tp=c:GetControler()
 	return Duel.GetMatchingGroup(Card.IsCode,tp,LOCATION_MZONE,0,nil,31533705):GetSum(Card.GetLevel)
-end
-function c16943770.indcon(e)
-	return Duel.IsExistingMatchingCard(Card.IsType,e:GetHandlerPlayer(),LOCATION_MZONE,0,1,nil,TYPE_TOKEN)
 end
 function c16943770.cfilter(c)
 	return c:IsSetCard(0x101b) and not c:IsCode(16943770) and c:IsAbleToRemoveAsCost()

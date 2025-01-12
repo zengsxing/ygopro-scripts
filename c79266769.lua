@@ -1,4 +1,5 @@
 --闇鋼龍 ダークネスメタル
+---@param c Card
 function c79266769.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
@@ -16,8 +17,7 @@ function c79266769.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c79266769.spcheck(g)
-	return g:GetClassCount(Card.GetLinkRace)==1
-		and g:GetClassCount(Card.GetLinkAttribute)==1
+	return aux.SameValueCheck(g,Card.GetLinkRace) and aux.SameValueCheck(g,Card.GetLinkAttribute)
 end
 function c79266769.filter(c,e,tp,zone)
 	return (c:IsFaceup() or not c:IsLocation(LOCATION_REMOVED)) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP_DEFENSE,tp,zone)

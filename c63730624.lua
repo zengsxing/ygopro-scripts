@@ -1,4 +1,5 @@
---ダブルツールD&C
+--ダブルツールD＆C
+---@param c Card
 function c63730624.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)

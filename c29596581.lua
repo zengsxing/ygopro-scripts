@@ -1,4 +1,5 @@
 --雷獣龍－サンダー・ドラゴン
+---@param c Card
 function c29596581.initial_effect(c)
 	--recycle
 	local e1=Effect.CreateEffect(c)
@@ -35,7 +36,7 @@ end
 function c29596581.filter(c)
 	return (c:IsLocation(LOCATION_GRAVE) or c:IsFaceup()) and c:IsSetCard(0x11c) and not c:IsCode(29596581) and c:IsAbleToHand()
 end
-function c29596581.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c29596581.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c29596581.filter,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,1,nil) end
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,1,tp,LOCATION_GRAVE+LOCATION_REMOVED)
 end

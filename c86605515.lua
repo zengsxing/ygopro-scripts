@@ -1,4 +1,5 @@
 --賢瑞官カルダーン
+---@param c Card
 function c86605515.initial_effect(c)
 	--set
 	local e1=Effect.CreateEffect(c)
@@ -30,6 +31,7 @@ function c86605515.setop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=g:GetFirst()
 	if tc and Duel.SSet(tp,tc)~=0 then
 		local e1=Effect.CreateEffect(e:GetHandler())
+		e1:SetDescription(aux.Stringid(86605515,2))
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)
 		e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)

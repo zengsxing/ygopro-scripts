@@ -1,5 +1,6 @@
 --幻爪の王ガゼル
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	aux.AddCodeList(c,63136489)
 	--add fusion/fiend
@@ -34,8 +35,7 @@ function s.filter(c)
 end
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local rc=c:GetReasonCard()
-	return rc:IsSummonType(SUMMON_TYPE_FUSION) and c:IsLocation(LOCATION_GRAVE)
+	return c:IsLocation(LOCATION_GRAVE) and r==REASON_FUSION
 end
 function s.ifilter(c)
 	return c:IsRace(RACE_ILLUSION) and c:IsAbleToHand()

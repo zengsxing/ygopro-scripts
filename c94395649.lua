@@ -1,4 +1,5 @@
 --超重禽属コカトリウム
+---@param c Card
 function c94395649.initial_effect(c)
 	--Special Summon
 	local e1=Effect.CreateEffect(c)
@@ -50,7 +51,7 @@ end
 function c94395649.filter(c)
 	return c:IsLevelBelow(4) and c:IsRace(RACE_BEAST+RACE_BEASTWARRIOR+RACE_WINDBEAST) and c:IsAbleToRemoveAsCost()
 end
-function c94395649.cost(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c94395649.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c94395649.filter,tp,LOCATION_DECK,0,1,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectMatchingCard(tp,c94395649.filter,tp,LOCATION_DECK,0,1,1,nil)

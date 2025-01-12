@@ -1,4 +1,5 @@
 --六花聖ストレナエ
+---@param c Card
 function c3828844.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)
@@ -51,7 +52,7 @@ function c3828844.thop(e,tp,eg,ep,ev,re,r,rp)
 end
 function c3828844.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetOverlayCount()>0
+	return c:IsPreviousLocation(LOCATION_MZONE) and c:GetPreviousOverlayCountOnField()>0
 end
 function c3828844.spfilter(c,e,tp)
 	if not (c:IsRankAbove(5) and c:IsRace(RACE_PLANT) and c:IsType(TYPE_XYZ)

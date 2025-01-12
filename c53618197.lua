@@ -1,5 +1,6 @@
 --コンフィラス・ド・ヌーベルズ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--spsummon success
@@ -74,6 +75,6 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 	local tc=Duel.SelectMatchingCard(tp,s.spfilter,tp,LOCATION_HAND+LOCATION_DECK,0,1,1,nil,e,tp):GetFirst()
 	if tc then
-		Duel.SpecialSummon(tc,SUMMON_VALUE_NOUVELLEZ,tp,tp,true,false,POS_FACEUP)
+		Duel.SpecialSummon(tc,0,tp,tp,true,false,POS_FACEUP)
 	end
 end

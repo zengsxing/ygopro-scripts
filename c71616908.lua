@@ -1,4 +1,5 @@
 --ジェムナイト・アメジス
+---@param c Card
 function c71616908.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -27,7 +28,7 @@ end
 function c71616908.thcon(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsPreviousLocation(LOCATION_ONFIELD)
 end
-function c71616908.thtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c71616908.thtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local g=Duel.GetMatchingGroup(Card.IsFacedown,tp,LOCATION_SZONE,LOCATION_SZONE,nil)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,g:GetCount(),0,0)

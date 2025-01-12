@@ -1,4 +1,5 @@
 --断罪の呪眼
+---@param c Card
 function c79383919.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -25,7 +26,7 @@ function c79383919.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	if e:IsHasType(EFFECT_TYPE_ACTIVATE)
 		and Duel.IsExistingMatchingCard(c79383919.filter,tp,LOCATION_SZONE,0,1,nil) then
-		e:SetProperty(EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CANNOT_NEGATE)
+		e:SetProperty(EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CAN_FORBIDDEN)
 	else
 		e:SetProperty(0)
 	end

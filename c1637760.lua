@@ -1,4 +1,5 @@
 --昇天の剛角笛
+---@param c Card
 function c1637760.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -11,7 +12,7 @@ function c1637760.initial_effect(c)
 	c:RegisterEffect(e1)
 end
 function c1637760.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0 and Duel.GetTurnPlayer()~=tp and rp==1-tp
+	return aux.NegateSummonCondition() and Duel.GetTurnPlayer()~=tp and rp==1-tp
 		and (Duel.GetCurrentPhase()==PHASE_MAIN1 or Duel.GetCurrentPhase()==PHASE_MAIN2)
 end
 function c1637760.target(e,tp,eg,ep,ev,re,r,rp,chk)

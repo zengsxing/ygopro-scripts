@@ -1,4 +1,5 @@
 --鉄の檻
+---@param c Card
 function c45072394.initial_effect(c)
 	aux.AddCodeList(c,72283691)
 	--Activate
@@ -14,8 +15,9 @@ function c45072394.initial_effect(c)
 	e2:SetDescription(aux.Stringid(45072394,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e2:SetRange(LOCATION_SZONE)
 	e2:SetCode(EVENT_PHASE+PHASE_STANDBY)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
+	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1)
 	e2:SetCondition(c45072394.spcon)
 	e2:SetTarget(c45072394.sptg)

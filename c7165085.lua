@@ -1,4 +1,5 @@
 --おとり人形
+---@param c Card
 function c7165085.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -24,8 +25,7 @@ function c7165085.activate(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) or tc:IsFaceup() then
 		if c:IsRelateToEffect(e) and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
-			c:CancelToGrave()
-			Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+			Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT,tp,true)
 		end
 		return
 	end
@@ -35,7 +35,9 @@ function c7165085.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tep=tc:GetControler()
 		if not te then
 			Duel.ChangePosition(tc,POS_FACEUP)
-			Duel.Destroy(tc,REASON_EFFECT)
+			if Duel.Destroy(tc,REASON_EFFECT)==0 then
+				Duel.SendtoGrave(tc,REASON_RULE)
+			end
 		else
 			local condition=te:GetCondition()
 			local cost=te:GetCost()
@@ -69,12 +71,13 @@ function c7165085.activate(e,tp,eg,ep,ev,re,r,rp)
 					tg=g:GetNext()
 				end
 			else
-				Duel.Destroy(tc,REASON_EFFECT)
+				if Duel.Destroy(tc,REASON_EFFECT)==0 then
+					Duel.SendtoGrave(tc,REASON_RULE)
+				end
 			end
 		end
 	end
 	if c:IsRelateToEffect(e) and e:IsHasType(EFFECT_TYPE_ACTIVATE) then
-		c:CancelToGrave()
-		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT,tp,true)
 	end
 end

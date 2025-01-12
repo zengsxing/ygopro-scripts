@@ -1,4 +1,5 @@
 --転生炎獣パイロ・フェニックス
+---@param c Card
 function c31313405.initial_effect(c)
 	--link summon
 	c:EnableReviveLimit()
@@ -85,7 +86,7 @@ function c31313405.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c31313405.cfilter(c,e,tp)
-	return c:IsFaceup() and c:IsControler(tp) and c:IsType(TYPE_LINK) and c:GetBaseAttack()>0 and c:IsCanBeEffectTarget(e)
+	return c:IsFaceup() and c:IsControler(tp) and c:IsType(TYPE_LINK) and c:GetBaseAttack()>0 and c:IsCanBeEffectTarget(e) and c:IsLocation(LOCATION_MZONE)
 end
 function c31313405.damtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return eg:IsContains(chkc) and c31313405.cfilter(chkc,e,1-tp) end

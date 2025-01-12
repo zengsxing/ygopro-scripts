@@ -1,5 +1,7 @@
---Ai-コンタクト
+--Ai－コンタクト
+---@param c Card
 function c10493654.initial_effect(c)
+	aux.AddCodeList(c,59054773)
 	--activate
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(10493654,0))

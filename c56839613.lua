@@ -1,4 +1,5 @@
 --電池メン－ボタン型
+---@param c Card
 function c56839613.initial_effect(c)
 	--flip effect
 	local e1=Effect.CreateEffect(c)
@@ -48,7 +49,7 @@ function c56839613.drcon(e,tp,eg,ep,ev,re,r,rp)
 		and e:GetHandler():IsReason(REASON_BATTLE)
 		and e:GetHandler():GetFlagEffect(56839613)~=0
 end
-function c56839613.drtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c56839613.drtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.SetTargetPlayer(tp)
 	Duel.SetTargetParam(1)

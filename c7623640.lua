@@ -1,4 +1,5 @@
 --暗黒界の導師 セルリ
+---@param c Card
 function c7623640.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -34,7 +35,7 @@ function c7623640.spop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c7623640.hdcon(e,tp,eg,ep,ev,re,r,rp)
-	return re:GetHandler():IsSetCard(0x6)
+	return e:GetHandler():IsSpecialSummonSetCard(0x6)
 end
 function c7623640.hdtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

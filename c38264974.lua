@@ -1,9 +1,10 @@
 --幻想魔獣キマイラ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	c:EnableReviveLimit()
 	--material
-	aux.AddFusionProcCodeFunRep(c,4796100,aux.FilterBoolFunction(Card.IsRace,RACE_ILLUSION),1,63,true,true)
+	aux.AddFusionProcCodeFunRep(c,4796100,aux.FilterBoolFunction(Card.IsRace,RACE_ILLUSION),1,127,true,true)
 	--change name
 	aux.EnableChangeCode(c,4796100,LOCATION_GRAVE+LOCATION_MZONE)
 	--multi-attack

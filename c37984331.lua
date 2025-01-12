@@ -1,4 +1,5 @@
 --真エクゾディア
+---@param c Card
 function c37984331.initial_effect(c)
 	--win
 	local e1=Effect.CreateEffect(c)
@@ -25,4 +26,5 @@ end
 function c37984331.operation(e,tp,eg,ep,ev,re,r,rp)
 	local WIN_REASON_TRUE_EXODIA = 0x20
 	Duel.Win(1-tp,WIN_REASON_TRUE_EXODIA)
+	if Duel.GetCurrentChain()==0 then Duel.Readjust() end
 end

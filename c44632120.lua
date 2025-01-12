@@ -1,6 +1,7 @@
 --クリバー
+---@param c Card
 function c44632120.initial_effect(c)
-	aux.AddCodeList(c,40640057)
+	aux.AddCodeList(c,71036835,7021574,34419588,40640057)
 	--Destroyed
 	local e1=Effect.CreateEffect(c)
 	e1:SetDescription(aux.Stringid(44632120,0))
@@ -56,7 +57,7 @@ end
 function c44632120.rlcheck(sg,c,tp)
 	local g=sg:Clone()
 	g:AddCard(c)
-	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,aux.IsInGroup,#g,nil,g)
+	return Duel.GetMZoneCount(tp,g)>0 and Duel.CheckReleaseGroupEx(tp,aux.IsInGroup,#g,REASON_COST,true,nil,g)
 end
 function c44632120.spcost2(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()

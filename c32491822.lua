@@ -1,4 +1,5 @@
 --降雷皇ハモン
+---@param c Card
 function c32491822.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon
@@ -61,7 +62,7 @@ function c32491822.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c32491822.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.SendtoGrave(g,REASON_COST)
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c32491822.damcon(e,tp,eg,ep,ev,re,r,rp)

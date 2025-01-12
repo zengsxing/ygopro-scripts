@@ -1,4 +1,5 @@
 --ガーディアン・トライス
+---@param c Card
 function c46037213.initial_effect(c)
 	--sum limit
 	local e1=Effect.CreateEffect(c)
@@ -42,8 +43,7 @@ end
 function c46037213.spfilter(c,e,tp,rc)
 	return c:IsLocation(LOCATION_GRAVE) and c:IsReason(REASON_SUMMON) and c:GetReasonCard()==rc and c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
-function c46037213.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
-	if chkc then return false end
+function c46037213.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	local g=e:GetHandler():GetMaterial():Filter(c46037213.spfilter,nil,e,tp,e:GetHandler())
 	Duel.SetTargetCard(g)

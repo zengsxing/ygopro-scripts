@@ -1,5 +1,6 @@
 --ヴィシャス＝アストラウド
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -31,7 +32,7 @@ function s.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function s.matfilter(c)
-	return c:IsAttack(1500) and c:IsDefense(2100)
+	return c:IsAttack(1500) and c:IsDefense(2100) and c:IsType(TYPE_MONSTER)
 end
 function s.destg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()

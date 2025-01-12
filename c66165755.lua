@@ -1,4 +1,5 @@
 --A・ジェネクス・アクセル
+---@param c Card
 function c66165755.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x2),aux.NonTuner(nil),1)
@@ -34,7 +35,7 @@ end
 function c66165755.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
 	if not tc:IsRelateToEffect(e) or Duel.GetLocationCount(tp,LOCATION_MZONE)<=0
-		or not tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
+		or not tc:IsRace(RACE_MACHINE) or not tc:IsCanBeSpecialSummoned(e,0,tp,false,false) then return end
 	if Duel.SpecialSummonStep(tc,0,tp,tp,false,false,POS_FACEUP) then
 		local atk=tc:GetBaseAttack()
 		local e1=Effect.CreateEffect(e:GetHandler())

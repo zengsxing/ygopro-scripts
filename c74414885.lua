@@ -1,4 +1,5 @@
 --NEXT
+---@param c Card
 function c74414885.initial_effect(c)
 	aux.AddCodeList(c,89943723)
 	aux.AddSetNameMonsterList(c,0x3008)
@@ -13,6 +14,7 @@ function c74414885.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act in hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(74414885,1))
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	e2:SetCondition(c74414885.handcon)

@@ -1,5 +1,6 @@
 --トラップトラック
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -37,6 +38,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		local tc=g:GetFirst()
 		if tc and Duel.SSet(tp,tc)~=0 then
 			local e1=Effect.CreateEffect(c)
+			e1:SetDescription(aux.Stringid(70825459,0))
 			e1:SetType(EFFECT_TYPE_SINGLE)
 			e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 			e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)

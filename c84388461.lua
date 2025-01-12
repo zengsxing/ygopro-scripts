@@ -1,4 +1,5 @@
 --剣聖の影霊衣－セフィラセイバー
+---@param c Card
 function c84388461.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
@@ -7,7 +8,7 @@ function c84388461.initial_effect(c)
 	e2:SetType(EFFECT_TYPE_FIELD)
 	e2:SetRange(LOCATION_PZONE)
 	e2:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
-	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CANNOT_NEGATE)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CAN_FORBIDDEN)
 	e2:SetTargetRange(1,0)
 	e2:SetTarget(c84388461.splimit)
 	c:RegisterEffect(e2)

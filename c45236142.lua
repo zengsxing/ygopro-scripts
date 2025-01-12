@@ -1,5 +1,7 @@
 --A宝玉獣 コバルト・イーグル
+---@param c Card
 function c45236142.initial_effect(c)
+	aux.AddCodeList(c,12644061)
 	Duel.EnableGlobalFlag(GLOBALFLAG_SELF_TOGRAVE)
 	--self to grave
 	local e1=Effect.CreateEffect(c)

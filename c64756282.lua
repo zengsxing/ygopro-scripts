@@ -1,4 +1,5 @@
 --ウィッチクラフト・ジェニー
+---@param c Card
 function c64756282.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -81,6 +82,7 @@ function c64756282.cpcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	g:AddCard(c)
 	Duel.Remove(g,POS_FACEUP,REASON_COST)
 end
+---dynamic target
 function c64756282.cptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local c=e:GetHandler()
 	local te=e:GetLabelObject()

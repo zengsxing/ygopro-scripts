@@ -1,4 +1,5 @@
 --邪龍アナンタ
+---@param c Card
 function c8400623.initial_effect(c)
 	c:EnableReviveLimit()
 	--cannot special summon
@@ -43,7 +44,7 @@ function c8400623.spcon(e,c)
 end
 function c8400623.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=Duel.GetMatchingGroup(c8400623.cfilter,tp,LOCATION_MZONE+LOCATION_GRAVE,0,nil)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)
 	e1:SetCode(EFFECT_SET_ATTACK)

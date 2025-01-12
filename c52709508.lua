@@ -1,4 +1,5 @@
 --A・ジェネクス・トライフォース
+---@param c Card
 function c52709508.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSetCard,0x2),aux.NonTuner(nil),1)
@@ -116,8 +117,7 @@ function c52709508.sptg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 end
 function c52709508.spop(e,tp,eg,ep,ev,re,r,rp)
 	local tc=Duel.GetFirstTarget()
-	if tc:IsRelateToEffect(e) then
+	if tc:IsRelateToEffect(e) and tc:IsAttribute(ATTRIBUTE_LIGHT) then
 		Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEDOWN_DEFENSE)
-		Duel.ConfirmCards(1-tp,tc)
 	end
 end

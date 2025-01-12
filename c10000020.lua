@@ -1,4 +1,5 @@
 --オシリスの天空竜
+---@param c Card
 function c10000020.initial_effect(c)
 	--summon with 3 tribute
 	local e1=Effect.CreateEffect(c)
@@ -100,8 +101,8 @@ function c10000020.atkfilter(c,tp)
 	return c:IsControler(tp) and c:IsPosition(POS_FACEUP_ATTACK)
 end
 function c10000020.atktg(e,tp,eg,ep,ev,re,r,rp,chk)
-	if chk==0 then return eg:IsExists(c10000020.atkfilter,1,nil,1-tp) end
-	local g=eg:Filter(c10000020.atkfilter,nil,1-tp)
+	if chk==0 then return eg:IsExists(c10000020.atkfilter,1,e:GetHandler(),1-tp) end
+	local g=eg:Filter(c10000020.atkfilter,e:GetHandler(),1-tp)
 	Duel.SetTargetCard(g)
 end
 function c10000020.atkop(e,tp,eg,ep,ev,re,r,rp)

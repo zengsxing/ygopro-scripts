@@ -1,4 +1,5 @@
 --EMトランプ・ウィッチ
+---@param c Card
 function c91584698.initial_effect(c)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
@@ -13,7 +14,7 @@ function c91584698.initial_effect(c)
 	c:RegisterEffect(e2)
 	--tohand
 	local e3=Effect.CreateEffect(c)
-	e3:SetCategory(CATEGORY_TOHAND)
+	e3:SetCategory(CATEGORY_SEARCH+CATEGORY_TOHAND)
 	e3:SetType(EFFECT_TYPE_IGNITION)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCost(c91584698.thcost)

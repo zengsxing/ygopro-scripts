@@ -1,4 +1,5 @@
 --熟練の白魔導師
+---@param c Card
 function c46363422.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	c:SetCounterLimit(0x1,3)
@@ -28,7 +29,7 @@ function c46363422.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c46363422.acop(e,tp,eg,ep,ev,re,r,rp)
-	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
+	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0 then
 		e:GetHandler():AddCounter(0x1,1)
 	end
 end

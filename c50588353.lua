@@ -1,4 +1,5 @@
 --水晶機巧－ハリファイバー
+---@param c Card
 function c50588353.initial_effect(c)
 	--link summon
 	aux.AddLinkProcedure(c,nil,2,2,c50588353.lcheck)
@@ -20,7 +21,6 @@ function c50588353.initial_effect(c)
 	e2:SetDescription(aux.Stringid(50588353,1))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_QUICK_O)
-	e2:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_FREE_CHAIN)
 	e2:SetHintTiming(0,TIMING_MAIN_END+TIMING_BATTLE_START+TIMING_BATTLE_END)
 	e2:SetRange(LOCATION_MZONE)

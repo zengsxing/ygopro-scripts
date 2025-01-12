@@ -1,5 +1,7 @@
 --ヴァリアンツの忍者－南月
+---@param c Card
 function c41525660.initial_effect(c)
+	aux.AddCodeList(c,49568943)
 	--pendulum summon
 	aux.EnablePendulumAttribute(c)
 	--spsummon

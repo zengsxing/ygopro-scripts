@@ -1,4 +1,5 @@
 --ダイガスタ・ガルドス
+---@param c Card
 function c84766279.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(Card.IsSetCard,0x10),1)
@@ -23,6 +24,7 @@ function c84766279.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.IsExistingMatchingCard(c84766279.costfilter,tp,LOCATION_GRAVE,0,2,nil) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c84766279.costfilter,tp,LOCATION_GRAVE,0,2,2,nil)
+	Duel.HintSelection(g)
 	Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_COST)
 end
 function c84766279.filter(c)

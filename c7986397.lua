@@ -1,4 +1,5 @@
 --リヴェンデット・バース
+---@param c Card
 function c7986397.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -19,7 +20,7 @@ end
 function c7986397.rcheck(tp,g,c)
 	return g:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=1
 end
-function c7986397.rgcheck(g)
+function c7986397.rgcheck(g,ec)
 	return g:FilterCount(Card.IsLocation,nil,LOCATION_DECK)<=1
 end
 function c7986397.target(e,tp,eg,ep,ev,re,r,rp,chk)

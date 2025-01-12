@@ -1,4 +1,5 @@
 --マジカル・コンダクター
+---@param c Card
 function c6061630.initial_effect(c)
 	c:EnableCounterPermit(0x1)
 	--add counter
@@ -27,7 +28,7 @@ function c6061630.initial_effect(c)
 	c:RegisterEffect(e2)
 end
 function c6061630.acop(e,tp,eg,ep,ev,re,r,rp)
-	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
+	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0 then
 		e:GetHandler():AddCounter(0x1,2)
 	end
 end

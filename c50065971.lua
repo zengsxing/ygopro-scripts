@@ -1,4 +1,5 @@
 --超重忍者シノビ－A・C
+---@param c Card
 function c50065971.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsRace,RACE_MACHINE),aux.NonTuner(Card.IsRace,RACE_MACHINE),1)
@@ -39,7 +40,7 @@ function c50065971.initial_effect(c)
 end
 function c50065971.dircon(e,tp,eg,ep,ev,re,r,rp)
 	return not Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_GRAVE,0,1,nil,TYPE_SPELL+TYPE_TRAP)
-		and not e:GetHandler():IsHasEffect(EFFECT_DIRECT_ATTACK)
+		and not e:GetHandler():IsHasEffect(EFFECT_DIRECT_ATTACK) and aux.bpcon(e,tp,eg,ep,ev,re,r,rp)
 end
 function c50065971.dirop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()

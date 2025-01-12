@@ -1,5 +1,6 @@
 --コズミック・クェーサー・ドラゴン
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsSynchroType,TYPE_SYNCHRO),aux.NonTuner(Card.IsSynchroType,TYPE_SYNCHRO),2)
@@ -18,7 +19,7 @@ function s.initial_effect(c)
 	e2:SetCategory(CATEGORY_DISABLE)
 	e2:SetType(EFFECT_TYPE_IGNITION)
 	e2:SetCountLimit(1)
-	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CANNOT_NEGATE)
+	e2:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CAN_FORBIDDEN)
 	e2:SetRange(LOCATION_MZONE)
 	e2:SetTarget(s.distg)
 	e2:SetOperation(s.disop)

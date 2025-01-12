@@ -1,4 +1,5 @@
 --遺言の仮面
+---@param c Card
 function c22610082.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -26,7 +27,6 @@ end
 function c22610082.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
 	if c:IsRelateToEffect(e) then
-		c:CancelToGrave()
-		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
+		Duel.SendtoDeck(c,nil,SEQ_DECKSHUFFLE,REASON_EFFECT,tp,true)
 	end
 end

@@ -1,4 +1,5 @@
 --No.79 BK 新星のカイザー
+---@param c Card
 function c71921856.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)
@@ -54,7 +55,7 @@ function c71921856.atkval(e,c)
 end
 function c71921856.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	local ct=c:GetOverlayCount()
+	local ct=c:GetPreviousOverlayCountOnField()
 	e:SetLabel(ct)
 	return c:IsReason(REASON_DESTROY) and c:GetReasonPlayer()==1-tp
 		and c:IsPreviousLocation(LOCATION_MZONE) and c:IsPreviousControler(tp) and ct>0

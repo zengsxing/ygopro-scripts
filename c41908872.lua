@@ -1,4 +1,5 @@
 --覇王眷竜ライトヴルム
+---@param c Card
 function c41908872.initial_effect(c)
 	aux.AddCodeList(c,13331639)
 	--pendulum summon
@@ -10,7 +11,7 @@ function c41908872.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetRange(LOCATION_PZONE)
-	e1:SetProperty(EFFECT_FLAG_DELAY)
+	e1:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_ACTIVATE_CONDITION)
 	e1:SetCountLimit(1,41908872)
 	e1:SetCondition(c41908872.spcon)
 	e1:SetTarget(c41908872.sptg)

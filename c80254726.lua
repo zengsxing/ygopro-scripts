@@ -1,4 +1,5 @@
 --ブラック・バード・クローズ
+---@param c Card
 function c80254726.initial_effect(c)
 	aux.AddCodeList(c,9012916)
 	--Activate
@@ -13,6 +14,7 @@ function c80254726.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act in hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(80254726,1))
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	e2:SetCondition(c80254726.handcon)

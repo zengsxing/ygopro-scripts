@@ -1,11 +1,12 @@
 --幻妖フルドラ
+---@param c Card
 function c81263643.initial_effect(c)
 	--to hand
 	local e1=Effect.CreateEffect(c)
 	e1:SetCategory(CATEGORY_TOHAND)
 	e1:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e1:SetCode(EVENT_SUMMON_SUCCESS)
-	e1:SetProperty(EFFECT_FLAG_CARD_TARGET+EFFECT_FLAG_DELAY)
+	e1:SetProperty(EFFECT_FLAG_DELAY)
 	e1:SetCountLimit(1,81263643)
 	e1:SetCost(c81263643.cost)
 	e1:SetTarget(c81263643.target)

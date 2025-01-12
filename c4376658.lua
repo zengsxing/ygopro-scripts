@@ -1,4 +1,5 @@
 --憑依装着－ヒータ
+---@param c Card
 function c4376658.initial_effect(c)
 	--spsummon proc
 	local e1=Effect.CreateEffect(c)
@@ -42,7 +43,7 @@ function c4376658.sptg(e,tp,eg,ep,ev,re,r,rp,chk,c)
 end
 function c4376658.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
-	Duel.SendtoGrave(g,REASON_COST)
+	Duel.SendtoGrave(g,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function c4376658.condition(e,tp,eg,ep,ev,re,r,rp)

@@ -1,4 +1,5 @@
 --神の通告
+---@param c Card
 function c40605147.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -15,7 +16,7 @@ function c40605147.initial_effect(c)
 	e2:SetCategory(CATEGORY_DISABLE_SUMMON+CATEGORY_DESTROY)
 	e2:SetType(EFFECT_TYPE_ACTIVATE)
 	e2:SetCode(EVENT_SPSUMMON)
-	e2:SetCondition(c40605147.condition1)
+	e2:SetCondition(aux.NegateSummonCondition)
 	e2:SetCost(c40605147.cost)
 	e2:SetTarget(c40605147.target1)
 	e2:SetOperation(c40605147.activate1)
@@ -39,9 +40,6 @@ function c40605147.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 		Duel.Destroy(eg,REASON_EFFECT)
 	end
-end
-function c40605147.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0
 end
 function c40605147.target1(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

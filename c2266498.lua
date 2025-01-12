@@ -1,4 +1,5 @@
 --ヴェンデット・リユニオン
+---@param c Card
 function c2266498.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -24,7 +25,7 @@ function c2266498.fselect(g,mc)
 	return aux.dncheck(g) and g:CheckWithSumEqual(Card.GetRitualLevel,mc:GetLevel(),g:GetCount(),g:GetCount(),mc)
 end
 function c2266498.filter(c,e,tp)
-	return c:IsFaceup() and c:IsSetCard(0x106) and Duel.IsPlayerCanRelease(tp,c)
+	return c:IsFaceup() and c:IsSetCard(0x106) and Duel.IsPlayerCanRelease(tp,c,REASON_EFFECT)
 		and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEDOWN_DEFENSE)
 end
 function c2266498.target(e,tp,eg,ep,ev,re,r,rp,chk)

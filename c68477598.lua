@@ -1,4 +1,5 @@
 --ペンデュラム・ホール
+---@param c Card
 function c68477598.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)
@@ -14,7 +15,7 @@ function c68477598.cfilter(c)
 	return c:IsSummonType(SUMMON_TYPE_PENDULUM)
 end
 function c68477598.condition(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0 and eg:IsExists(c68477598.cfilter,1,nil)
+	return aux.NegateSummonCondition() and eg:IsExists(c68477598.cfilter,1,nil)
 end
 function c68477598.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end

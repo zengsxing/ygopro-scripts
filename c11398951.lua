@@ -1,4 +1,5 @@
 --機械天使の絶対儀式
+---@param c Card
 function c11398951.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -46,6 +47,9 @@ function c11398951.activate(e,tp,eg,ep,ev,re,r,rp)
 		if not mat then goto cancel end
 		tc:SetMaterial(mat)
 		local mat2=mat:Filter(Card.IsLocation,nil,LOCATION_GRAVE):Filter(Card.IsRace,nil,RACE_WARRIOR+RACE_FAIRY)
+		if #mat2>0 then
+			Duel.HintSelection(mat2)
+		end
 		mat:Sub(mat2)
 		Duel.ReleaseRitualMaterial(mat)
 		Duel.SendtoDeck(mat2,nil,SEQ_DECKSHUFFLE,REASON_EFFECT+REASON_MATERIAL+REASON_RITUAL)

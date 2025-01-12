@@ -1,6 +1,8 @@
 --音響戦士ロックス
 local s,id,o=GetID()
+---@param c Card
 function c24070330.initial_effect(c)
+	aux.AddCodeList(c,75304793)
 	--synchro summon
 	aux.AddSynchroProcedure(c,nil,aux.NonTuner(nil),1)
 	c:EnableReviveLimit()

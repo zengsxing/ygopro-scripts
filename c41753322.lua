@@ -1,4 +1,5 @@
 --竜脚獣ブラキオン
+---@param c Card
 function c41753322.initial_effect(c)
 	--cannot special summon
 	local e1=Effect.CreateEffect(c)
@@ -40,7 +41,7 @@ function c41753322.initial_effect(c)
 	e5:SetType(EFFECT_TYPE_SINGLE)
 	e5:SetCode(EFFECT_CHANGE_INVOLVING_BATTLE_DAMAGE)
 	e5:SetCondition(c41753322.dcon)
-	e5:SetOperation(aux.ChangeBattleDamage(1,DOUBLE_DAMAGE))
+	e5:SetValue(aux.ChangeBattleDamage(1,DOUBLE_DAMAGE))
 	c:RegisterEffect(e5)
 end
 function c41753322.otfilter(c,tp)

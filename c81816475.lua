@@ -1,4 +1,5 @@
 --オーバーレイ・イーター
+---@param c Card
 function c81816475.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)
@@ -28,4 +29,5 @@ function c81816475.operation(e,tp,eg,ep,ev,re,r,rp)
 	local oc=mg:GetFirst():GetOverlayTarget()
 	Duel.Overlay(tc,mg)
 	Duel.RaiseSingleEvent(oc,EVENT_DETACH_MATERIAL,e,0,0,0,0)
+	Duel.RaiseEvent(oc,EVENT_DETACH_MATERIAL,e,0,0,0,0)
 end

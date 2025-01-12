@@ -1,4 +1,5 @@
 --絶神鳥シムルグ
+---@param c Card
 function c52843699.initial_effect(c)
 	--Attribute WIND
 	local e0=Effect.CreateEffect(c)
@@ -32,7 +33,7 @@ function c52843699.initial_effect(c)
 	e3:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e3:SetProperty(EFFECT_FLAG_DELAY)
 	e3:SetCode(EVENT_SUMMON_SUCCESS)
-	e3:SetCountLimit(1,88232397)
+	e3:SetCountLimit(1,52843700)
 	e3:SetCost(c52843699.cost)
 	e3:SetTarget(c52843699.target)
 	e3:SetOperation(c52843699.operation)

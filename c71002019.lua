@@ -1,4 +1,5 @@
 --六花精ボタン
+---@param c Card
 function c71002019.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -63,5 +64,6 @@ function c71002019.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c71002019.thcon(e,tp,eg,ep,ev,re,r,rp)
-	return re and re:IsActiveType(TYPE_MONSTER) and Duel.GetChainInfo(ev,CHAININFO_TRIGGERING_RACE)&RACE_PLANT~=0
+	local typ,race=e:GetHandler():GetSpecialSummonInfo(SUMMON_INFO_TYPE,SUMMON_INFO_RACE)
+	return typ&TYPE_MONSTER~=0 and race&RACE_PLANT~=0
 end

@@ -1,4 +1,5 @@
 --F.A.シャイニングスターGT
+---@param c Card
 function c37414347.initial_effect(c)
 	c:EnableCounterPermit(0x4a)
 	--link summon
@@ -29,6 +30,7 @@ function c37414347.initial_effect(c)
 	e4:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_F)
 	e4:SetCode(EVENT_CHAINING)
 	e4:SetRange(LOCATION_MZONE)
+	e4:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e4:SetCondition(c37414347.ctcon)
 	e4:SetTarget(c37414347.cttg)
 	e4:SetOperation(c37414347.ctop)

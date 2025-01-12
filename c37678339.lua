@@ -1,6 +1,7 @@
 --夢魔鏡の魘魔－ネイロス
+---@param c Card
 function c37678339.initial_effect(c)
-	aux.AddCodeList(c,74665651,1050355)
+	aux.AddCodeList(c,74665651,1050355,35187185)
 	--fusion material
 	c:EnableReviveLimit()
 	aux.AddFusionProcFunRep(c,c37678339.ffilter,2,true)

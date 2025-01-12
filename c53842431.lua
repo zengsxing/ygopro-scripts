@@ -1,4 +1,5 @@
 --魔導獣 マスターケルベロス
+---@param c Card
 function c53842431.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	c:EnableCounterPermit(0x1)
@@ -75,7 +76,7 @@ function c53842431.thop(e,tp,eg,ep,ev,re,r,rp)
 	end
 end
 function c53842431.acop(e,tp,eg,ep,ev,re,r,rp)
-	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(1)>0 then
+	if re:IsHasType(EFFECT_TYPE_ACTIVATE) and re:IsActiveType(TYPE_SPELL) and e:GetHandler():GetFlagEffect(FLAG_ID_CHAINING)>0 then
 		e:GetHandler():AddCounter(0x1,2)
 	end
 end

@@ -1,4 +1,5 @@
 --神の忠告
+---@param c Card
 function c92512625.initial_effect(c)
 	--Activate(summon)
 	local e1=Effect.CreateEffect(c)
@@ -36,7 +37,7 @@ function c92512625.condition(e,tp,eg,ep,ev,re,r,rp)
 		and not Duel.IsExistingMatchingCard(c92512625.cfilter,tp,LOCATION_SZONE,0,1,c)
 end
 function c92512625.condition1(e,tp,eg,ep,ev,re,r,rp)
-	return Duel.GetCurrentChain()==0
+	return aux.NegateSummonCondition()
 		and c92512625.condition(e,tp,eg,ep,ev,re,r,rp)
 end
 function c92512625.cost(e,tp,eg,ep,ev,re,r,rp,chk)

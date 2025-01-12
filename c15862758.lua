@@ -1,4 +1,5 @@
 --CiNo.1000 夢幻虚光神ヌメロニアス・ヌメロニア
+---@param c Card
 function c15862758.initial_effect(c)
 	--Xyz Summon
 	aux.AddXyzProcedure(c,nil,13,5)
@@ -52,7 +53,7 @@ function c15862758.operation(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetTargetRange(0,LOCATION_MZONE)
 	e2:SetCondition(c15862758.effcon)
 	e2:SetLabel(turn)
-	e2:SetReset(RESET_EVENT+RESETS_WITHOUT_TEMP_REMOVE)
+	e2:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e2)
 	local e3=e2:Clone()
 	e3:SetCode(EFFECT_MUST_ATTACK_MONSTER)
@@ -66,7 +67,7 @@ function c15862758.operation(e,tp,eg,ep,ev,re,r,rp)
 	e4:SetCondition(c15862758.wincon)
 	e4:SetOperation(c15862758.winop)
 	e4:SetLabel(turn)
-	e4:SetReset(RESET_EVENT+RESETS_WITHOUT_TEMP_REMOVE)
+	e4:SetReset(RESET_EVENT+RESETS_STANDARD)
 	c:RegisterEffect(e4)
 end
 function c15862758.atkcon(e)

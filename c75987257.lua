@@ -1,4 +1,5 @@
 --隷属の鱗粉
+---@param c Card
 function c75987257.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -55,7 +56,7 @@ function c75987257.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local tc=Duel.GetAttacker()
 	if chkc then return chkc==tc end
 	if chk==0 then return tc:IsLocation(LOCATION_MZONE) and tc:IsAttackPos()
-		and tc:IsCanChangePosition() and tc:IsCanBeEffectTarget(e) end
+		and tc:IsCanChangePosition() and tc:IsCanBeEffectTarget(e) and e:IsCostChecked() end
 	Duel.SetTargetCard(tc)
 end
 function c75987257.operation(e,tp,eg,ep,ev,re,r,rp)

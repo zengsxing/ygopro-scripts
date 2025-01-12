@@ -1,4 +1,5 @@
 --オッドアイズ・ボルテックス・ドラゴン
+---@param c Card
 function c53262004.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -60,6 +61,7 @@ end
 function c53262004.disop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	local g=Duel.SelectMatchingCard(tp,c53262004.disfilter,tp,LOCATION_EXTRA,0,1,1,nil)
+	Duel.HintSelection(g)
 	if Duel.SendtoDeck(g,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)~=0 then
 		if Duel.NegateActivation(ev) and re:GetHandler():IsRelateToEffect(re) then
 			Duel.Destroy(eg,REASON_EFFECT)

@@ -1,5 +1,6 @@
 --究極宝玉神 レインボー・ドラゴン オーバー・ドライブ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--fusion material
 	c:EnableReviveLimit()
@@ -94,7 +95,7 @@ end
 function s.spop(e,tp,eg,ep,ev,re,r,rp,c)
 	local g=e:GetLabelObject()
 	c:SetMaterial(g)
-	Duel.Remove(g,POS_FACEUP,REASON_COST)
+	Duel.Remove(g,POS_FACEUP,REASON_SPSUMMON)
 	g:DeleteGroup()
 end
 function s.atkfilter(c)

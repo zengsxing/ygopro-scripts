@@ -1,5 +1,6 @@
 --EMERGENCY！
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--summon and release
 	local e1=Effect.CreateEffect(c)
@@ -27,11 +28,11 @@ function s.spfilter(c,e,tp)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) end
+		and Duel.IsExistingMatchingCard(s.spfilter,tp,LOCATION_DECK,0,1,nil,e,tp) and Duel.IsPlayerCanRelease(tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_DECK)
 end
 function s.rfilter(c)
-	return c:IsType(TYPE_MONSTER) and c:IsReleasableByEffect() and c:IsSetCard(0x18b)
+	return c:IsType(TYPE_MONSTER) and c:IsSetCard(0x18b)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if Duel.GetLocationCount(tp,LOCATION_MZONE)<=0 then return end
@@ -40,7 +41,7 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	if g:GetCount()>0 and Duel.SpecialSummon(g,0,tp,tp,false,false,POS_FACEUP_DEFENSE)~=0 then
 		Duel.BreakEffect()
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_RELEASE)
-		local rg=Duel.SelectReleaseGroupEx(tp,s.rfilter,1,1,nil)
+		local rg=Duel.SelectReleaseGroupEx(tp,s.rfilter,1,1,REASON_EFFECT,true,nil)
 		if rg:GetCount()>0 then
 			Duel.HintSelection(rg)
 			Duel.Release(rg,REASON_EFFECT)

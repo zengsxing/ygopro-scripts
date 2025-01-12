@@ -1,5 +1,7 @@
---ホルスの祝福-ドゥアムテフ
+--ホルスの祝福－ドゥアムテフ
+---@param c Card
 function c11335209.initial_effect(c)
+	aux.AddCodeList(c,16528181)
 	--special summon
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)

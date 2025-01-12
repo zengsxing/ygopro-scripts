@@ -1,4 +1,5 @@
 --冥王竜ヴァンダルギオン
+---@param c Card
 function c24857466.initial_effect(c)
 	local e2=Effect.CreateEffect(c)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
@@ -71,6 +72,7 @@ end
 function c24857466.spfilter(c,e,tp)
 	return c:IsCanBeSpecialSummoned(e,0,tp,false,false)
 end
+---dynamic target
 function c24857466.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then
 		if ev==TYPE_TRAP then

@@ -1,8 +1,10 @@
 --黒翼の魔術師
+---@param c Card
 function c49826746.initial_effect(c)
 	aux.AddCodeList(c,80280737)
 	--Trap activate in set turn
 	local e1=Effect.CreateEffect(c)
+	e1:SetDescription(aux.Stringid(49826746,0))
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetCode(EFFECT_TRAP_ACT_IN_SET_TURN)
 	e1:SetProperty(EFFECT_FLAG_SET_AVAILABLE)

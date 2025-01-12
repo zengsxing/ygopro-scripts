@@ -1,4 +1,5 @@
 --F.A.ハングオンマッハ
+---@param c Card
 function c93449450.initial_effect(c)
 	--atk up
 	local e1=Effect.CreateEffect(c)
@@ -23,6 +24,7 @@ function c93449450.initial_effect(c)
 	e3:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_DAMAGE_STEP)
 	e3:SetCode(EVENT_CHAINING)
 	e3:SetRange(LOCATION_MZONE)
+	e3:SetCountLimit(1,EFFECT_COUNT_CODE_CHAIN)
 	e3:SetCondition(c93449450.lvcon)
 	e3:SetOperation(c93449450.lvop)
 	c:RegisterEffect(e3)
@@ -34,7 +36,7 @@ function c93449450.initial_effect(c)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetCondition(c93449450.excon)
 	e4:SetTarget(c93449450.extg)
-	e4:SetTargetRange(0xfe,0xff)
+	e4:SetTargetRange(0,LOCATION_DECK)
 	e4:SetValue(LOCATION_REMOVED)
 	c:RegisterEffect(e4)
 end

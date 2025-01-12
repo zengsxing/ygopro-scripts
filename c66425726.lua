@@ -1,4 +1,5 @@
 --オッドアイズ・ペンデュラムグラフ・ドラゴン
+---@param c Card
 function c66425726.initial_effect(c)
 	aux.EnablePendulumAttribute(c)
 	--revive limit
@@ -84,7 +85,7 @@ function c66425726.filter(c,sp)
 end
 function c66425726.damcon1(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c66425726.filter,1,nil,1-tp)
-		and (not re:IsHasType(EFFECT_TYPE_ACTIONS) or re:IsHasType(EFFECT_TYPE_CONTINUOUS))
+		and not Duel.IsChainSolving()
 end
 function c66425726.damop1(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,0,66425726)
@@ -92,7 +93,7 @@ function c66425726.damop1(e,tp,eg,ep,ev,re,r,rp)
 end
 function c66425726.regcon(e,tp,eg,ep,ev,re,r,rp)
 	return eg:IsExists(c66425726.filter,1,nil,1-tp)
-		and re:IsHasType(EFFECT_TYPE_ACTIONS) and not re:IsHasType(EFFECT_TYPE_CONTINUOUS)
+		and Duel.IsChainSolving()
 end
 function c66425726.regop(e,tp,eg,ep,ev,re,r,rp)
 	e:GetHandler():RegisterFlagEffect(66425726,RESET_CHAIN,0,1)
@@ -125,7 +126,7 @@ function c66425726.spfilter(c,e,tp)
 end
 function c66425726.disop(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	if c:IsRelateToEffect(e) and c:IsFaceup() and not c:IsImmuneToEffect(e) then
+	if c:IsRelateToEffect(e) and not c:IsImmuneToEffect(e) then
 		if Duel.MoveToField(c,tp,tp,LOCATION_PZONE,POS_FACEUP,true) and c:IsLocation(LOCATION_PZONE) then
 			if Duel.NegateEffect(ev) and c:IsSummonType(SUMMON_TYPE_RITUAL)
 				and Duel.IsExistingMatchingCard(c66425726.spfilter,tp,LOCATION_EXTRA,0,1,nil,e,tp)

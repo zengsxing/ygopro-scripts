@@ -1,4 +1,5 @@
 --法典の大賢者クロウリー
+---@param c Card
 function c9505425.initial_effect(c)
 	--special summon
 	local e1=Effect.CreateEffect(c)
@@ -55,7 +56,7 @@ end
 function c9505425.atttg(e,tp,eg,ep,ev,re,r,rp,chk)
 	if chk==0 then return true end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATTRIBUTE)
-	local aat=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL-e:GetHandler():GetAttribute())
+	local aat=Duel.AnnounceAttribute(tp,1,ATTRIBUTE_ALL&~e:GetHandler():GetAttribute())
 	e:SetLabel(aat)
 end
 function c9505425.attop(e,tp,eg,ep,ev,re,r,rp)

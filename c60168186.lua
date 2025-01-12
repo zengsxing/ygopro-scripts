@@ -1,4 +1,5 @@
 --異形神の契約書
+---@param c Card
 function c60168186.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -108,7 +109,7 @@ function c60168186.rmtg(e,tp,eg,ep,ev,re,r,rp,chk)
 end
 function c60168186.rmop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
-	local g=Duel.SelectMatchingCard(tp,Card.IsAbleToRemove,tp,LOCATION_ONFIELD+LOCATION_GRAVE,LOCATION_ONFIELD+LOCATION_GRAVE,1,1,nil)
+	local g=aux.SelectCardFromFieldFirst(tp,Card.IsAbleToRemove,tp,LOCATION_ONFIELD+LOCATION_GRAVE,LOCATION_ONFIELD+LOCATION_GRAVE,1,1,nil)
 	if g:GetCount()>0 then
 		Duel.Remove(g,POS_FACEUP,REASON_EFFECT)
 	end

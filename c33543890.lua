@@ -1,5 +1,7 @@
 --竜輝巧－ラスβ
+---@param c Card
 function c33543890.initial_effect(c)
+	c:EnableReviveLimit()
 	--spsummon condition
 	local e1=Effect.CreateEffect(c)
 	e1:SetType(EFFECT_TYPE_SINGLE)

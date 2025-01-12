@@ -1,5 +1,6 @@
 --ティアラメンツ・クシャトリラ
 local s,id,o=GetID()
+---@param c Card
 function s.initial_effect(c)
 	--spsummon
 	local e1=Effect.CreateEffect(c)
@@ -64,7 +65,7 @@ function s.spop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 end
-function s.ddtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function s.ddtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local b1=Duel.IsPlayerCanDiscardDeck(tp,3)
 	local b2=Duel.IsPlayerCanDiscardDeck(1-tp,3)
 	if chk==0 then return b1 or b2 end

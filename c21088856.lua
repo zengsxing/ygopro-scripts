@@ -1,4 +1,5 @@
 --華麗なる密偵－C
+---@param c Card
 function c21088856.initial_effect(c)
 	--
 	local e1=Effect.CreateEffect(c)
@@ -11,6 +12,7 @@ end
 function c21088856.operation(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.GetFieldGroup(1-tp,LOCATION_EXTRA,0)
 	if g:GetCount()==0 then return end
+	Duel.ShuffleExtra(1-tp)
 	local tc=g:RandomSelect(tp,1):GetFirst()
 	Duel.ConfirmCards(tp,tc)
 	local atk=tc:GetAttack()

@@ -1,4 +1,5 @@
 --ダイプレクサ・キマイラ
+---@param c Card
 function c78084378.initial_effect(c)
 	--fusion material
 	aux.AddFusionProcFunRep(c,aux.FilterBoolFunction(Card.IsRace,RACE_CYBERSE),2,true)
@@ -19,7 +20,7 @@ function c78084378.initial_effect(c)
 	e2:SetCategory(CATEGORY_TOHAND)
 	e2:SetType(EFFECT_TYPE_SINGLE+EFFECT_TYPE_TRIGGER_O)
 	e2:SetCode(EVENT_TO_GRAVE)
-	e2:SetProperty(EFFECT_FLAG_DELAY)
+	e2:SetProperty(EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e2:SetCountLimit(1,78084378)
 	e2:SetCondition(c78084378.thcon)
 	e2:SetTarget(c78084378.thtg)

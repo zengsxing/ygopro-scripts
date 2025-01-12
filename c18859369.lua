@@ -1,4 +1,5 @@
 --カオス・グレファー
+---@param c Card
 function c18859369.initial_effect(c)
 	--attribute
 	local e1=Effect.CreateEffect(c)
@@ -32,7 +33,7 @@ function c18859369.tgfilter2(c,attr)
 	return c:IsAbleToGrave() and c:IsAttribute(ATTRIBUTE_DARK+ATTRIBUTE_LIGHT)
 		and not c:IsAttribute(attr)
 end
-function c18859369.sgtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
+function c18859369.sgtg(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
 	if chk==0 then
 		if e:GetLabel()~=100 then return false end

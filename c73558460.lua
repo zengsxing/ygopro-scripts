@@ -1,4 +1,5 @@
 --サイバネット・リカバー
+---@param c Card
 function c73558460.initial_effect(c)
 	--activate
 	local e1=Effect.CreateEffect(c)
@@ -10,7 +11,7 @@ function c73558460.initial_effect(c)
 	e2:SetDescription(aux.Stringid(73558460,0))
 	e2:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e2:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_TRIGGER_O)
-	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY)
+	e2:SetProperty(EFFECT_FLAG_DAMAGE_STEP+EFFECT_FLAG_DELAY+EFFECT_FLAG_CARD_TARGET)
 	e2:SetCode(EVENT_DESTROYED)
 	e2:SetRange(LOCATION_SZONE)
 	e2:SetCountLimit(1,73558460)

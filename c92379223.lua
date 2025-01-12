@@ -1,4 +1,5 @@
 --黄金の征服王
+---@param c Card
 function c92379223.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -58,6 +59,9 @@ function c92379223.activate(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetClassCount(Card.GetCode)>=3 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			local tg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
+			if #tg>0 then
+				Duel.HintSelection(tg)
+			end
 			Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 			local og=Duel.GetOperatedGroup()
 			if og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end
@@ -75,6 +79,9 @@ function c92379223.activate(e,tp,eg,ep,ev,re,r,rp)
 		if g:GetClassCount(Card.GetCode)>=3 then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 			local tg=g:SelectSubGroup(tp,aux.dncheck,false,3,3)
+			if #tg>0 then
+				Duel.HintSelection(tg)
+			end
 			Duel.SendtoDeck(tg,nil,SEQ_DECKSHUFFLE,REASON_EFFECT)
 			local og=Duel.GetOperatedGroup()
 			if og:IsExists(Card.IsLocation,1,nil,LOCATION_DECK) then Duel.ShuffleDeck(tp) end

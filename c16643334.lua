@@ -1,4 +1,5 @@
 --輝光竜フォトン・ブラスト・ドラゴン
+---@param c Card
 function c16643334.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,4,2)
@@ -41,6 +42,7 @@ function c16643334.initial_effect(c)
 	e4:SetCategory(CATEGORY_SPECIAL_SUMMON)
 	e4:SetType(EFFECT_TYPE_QUICK_O)
 	e4:SetCode(EVENT_FREE_CHAIN)
+	e4:SetProperty(EFFECT_FLAG_CARD_TARGET)
 	e4:SetCountLimit(1)
 	e4:SetRange(LOCATION_MZONE)
 	e4:SetHintTiming(0,TIMING_BATTLE_START+TIMING_END_PHASE)

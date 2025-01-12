@@ -1,4 +1,5 @@
 --CNo.1000 夢幻虚神ヌメロニアス
+---@param c Card
 function c89477759.initial_effect(c)
 	--Xyz Summon
 	aux.AddXyzProcedure(c,nil,12,5)
@@ -79,7 +80,7 @@ function c89477759.desop2(e,tp,eg,ep,ev,re,r,rp)
 end
 function c89477759.spcon(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
-	return c:GetOverlayCount()>0 and c:IsPreviousLocation(LOCATION_MZONE)
+	return c:GetPreviousOverlayCountOnField()>0 and c:IsPreviousLocation(LOCATION_MZONE)
 		and rp==1-tp and c:IsReason(REASON_EFFECT) and c:IsReason(REASON_DESTROY) and c:IsPreviousControler(tp)
 end
 function c89477759.spfilter(c,e,tp)

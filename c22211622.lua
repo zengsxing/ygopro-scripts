@@ -1,4 +1,5 @@
 --覇王門無限
+---@param c Card
 function c22211622.initial_effect(c)
 	aux.AddCodeList(c,13331639)
 	aux.EnablePendulumAttribute(c)
@@ -7,7 +8,7 @@ function c22211622.initial_effect(c)
 	e1:SetType(EFFECT_TYPE_FIELD)
 	e1:SetRange(LOCATION_PZONE)
 	e1:SetCode(EFFECT_CANNOT_SPECIAL_SUMMON)
-	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CANNOT_NEGATE)
+	e1:SetProperty(EFFECT_FLAG_PLAYER_TARGET+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CAN_FORBIDDEN)
 	e1:SetTargetRange(1,0)
 	e1:SetCondition(c22211622.splimcon)
 	e1:SetTarget(c22211622.splimit)

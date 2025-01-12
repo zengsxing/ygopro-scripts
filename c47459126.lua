@@ -1,4 +1,5 @@
 --チューンド・マジシャン
+---@param c Card
 function c47459126.initial_effect(c)
 	aux.EnableDualAttribute(c)
 	local e1=Effect.CreateEffect(c)
@@ -10,3 +11,4 @@ function c47459126.initial_effect(c)
 	e1:SetValue(TYPE_TUNER)
 	c:RegisterEffect(e1)
 end
+c47459126.treat_itself_tuner=true

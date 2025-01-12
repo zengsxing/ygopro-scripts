@@ -1,4 +1,5 @@
 --X・Y・Zハイパーキャノン
+---@param c Card
 function c21723081.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -19,6 +20,7 @@ function c21723081.initial_effect(c)
 	e2:SetOperation(c21723081.operation)
 	c:RegisterEffect(e2)
 end
+c21723081.has_text_type=TYPE_UNION
 function c21723081.cfilter(c)
 	return c:IsFaceup() and (c:IsCode(91998119) or c:IsType(TYPE_FUSION) and aux.IsMaterialListCode(c,91998119))
 end

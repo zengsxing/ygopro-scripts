@@ -1,4 +1,5 @@
 --氷結界の破術師
+---@param c Card
 function c18482591.initial_effect(c)
 	--cannot activate
 	local e2=Effect.CreateEffect(c)
@@ -32,7 +33,8 @@ end
 function c18482591.aclimset(e,tp,eg,ep,ev,re,r,rp)
 	local tc=eg:GetFirst()
 	while tc do
-		tc:RegisterFlagEffect(18482591,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+RESET_OPPO_TURN,0,1)
+		local reset=tc:IsControler(tp) and RESET_OPPO_TURN or RESET_SELF_TURN
+		tc:RegisterFlagEffect(18482591,RESET_EVENT+RESETS_STANDARD+RESET_PHASE+PHASE_END+reset,0,1)
 		tc=eg:GetNext()
 	end
 end

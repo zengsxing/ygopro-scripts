@@ -1,4 +1,5 @@
 --白闘気一角
+---@param c Card
 function c63731062.initial_effect(c)
 	--synchro summon
 	aux.AddSynchroProcedure(c,aux.FilterBoolFunction(Card.IsAttribute,ATTRIBUTE_WATER),aux.NonTuner(nil),1)
@@ -28,6 +29,7 @@ function c63731062.initial_effect(c)
 	e2:SetOperation(c63731062.spop2)
 	c:RegisterEffect(e2)
 end
+c63731062.treat_itself_tuner=true
 function c63731062.spcon1(e,tp,eg,ep,ev,re,r,rp)
 	return e:GetHandler():IsSummonType(SUMMON_TYPE_SYNCHRO)
 end

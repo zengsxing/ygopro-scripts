@@ -1,4 +1,5 @@
 --邪神官チラム・サバク
+---@param c Card
 function c27103517.initial_effect(c)
 	--summon with no tribute
 	local e1=Effect.CreateEffect(c)
@@ -19,6 +20,7 @@ function c27103517.initial_effect(c)
 	e2:SetOperation(c27103517.spop)
 	c:RegisterEffect(e2)
 end
+c27103517.treat_itself_tuner=true
 function c27103517.sumcon(e,c,minc)
 	if c==nil then return true end
 	local tp=c:GetControler()

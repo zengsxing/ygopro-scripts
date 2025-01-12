@@ -1,4 +1,5 @@
 --海晶乙女瀑布
+---@param c Card
 function c27012990.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -14,6 +15,7 @@ function c27012990.initial_effect(c)
 	c:RegisterEffect(e1)
 	--act in hand
 	local e2=Effect.CreateEffect(c)
+	e2:SetDescription(aux.Stringid(27012990,0))
 	e2:SetType(EFFECT_TYPE_SINGLE)
 	e2:SetCode(EFFECT_TRAP_ACT_IN_HAND)
 	e2:SetCondition(c27012990.handcon)

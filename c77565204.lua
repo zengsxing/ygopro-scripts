@@ -1,4 +1,5 @@
 --未来融合－フューチャー・フュージョン
+---@param c Card
 function c77565204.initial_effect(c)
 	--Activate
 	local e1=Effect.CreateEffect(c)
@@ -110,7 +111,6 @@ function c77565204.procop(e,tp,eg,ep,ev,re,r,rp)
 	local g=Duel.SelectMatchingCard(tp,c77565204.procfilter,tp,LOCATION_EXTRA,0,1,1,nil,code,e,tp)
 	local tc=g:GetFirst()
 	if not tc then return end
-	tc:SetStatus(STATUS_FUTURE_FUSION,true)
 	local mat=e:GetLabelObject():GetLabelObject()
 	for mc in aux.Next(mat) do
 		if mc:GetFlagEffect(77565204)>0 then
@@ -118,7 +118,7 @@ function c77565204.procop(e,tp,eg,ep,ev,re,r,rp)
 		end
 	end
 	tc:SetMaterial(mat)
-	Duel.SpecialSummon(tc,SUMMON_TYPE_FUSION,tp,tp,false,false,POS_FACEUP)
+	Duel.SpecialSummon(tc,SUMMON_VALUE_FUTURE_FUSION,tp,tp,false,false,POS_FACEUP)
 	tc:CompleteProcedure()
 	c:SetCardTarget(tc)
 end

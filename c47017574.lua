@@ -1,4 +1,5 @@
 --CNo.92 偽骸虚龍 Heart－eartH Chaos Dragon
+---@param c Card
 function c47017574.initial_effect(c)
 	--xyz summon
 	aux.AddXyzProcedure(c,nil,10,4)
@@ -26,7 +27,7 @@ function c47017574.initial_effect(c)
 	e3:SetDescription(aux.Stringid(47017574,1))
 	e3:SetCategory(CATEGORY_DISABLE)
 	e3:SetType(EFFECT_TYPE_IGNITION)
-	e3:SetProperty(EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CANNOT_NEGATE)
+	e3:SetProperty(EFFECT_FLAG_CANNOT_INACTIVATE+EFFECT_FLAG_CANNOT_DISABLE+EFFECT_FLAG_CAN_FORBIDDEN)
 	e3:SetRange(LOCATION_MZONE)
 	e3:SetCountLimit(1)
 	e3:SetCondition(c47017574.discon)
